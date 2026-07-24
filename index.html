@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zafiro Boat — Excursiones privadas en barco · Port de Pollença, Mallorca</title>
+<meta name="description" content="Excursiones privadas en barco por la costa norte de Mallorca. Medio día, día completo y sunset desde el Puerto de Pollença. Todo incluido: paddle surf, kayaks y patrón profesional.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d2438'/%3E%3Cpath d='M16 6l3 6h-6z' fill='%23c9a668'/%3E%3Crect x='15' y='11' width='2' height='9' fill='%23c9a668'/%3E%3Cpath d='M8 20h16l-3 5H11z' fill='%23c9a668'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2438;
+    --navy-deep: #0a1d2e;
+    --gold: #c9a668;
+    --gold-light: #e0c088;
+    --cream: #f6f4ee;
+    --cream2: #eee9dc;
+    --ink: #16232c;
+    --ink-soft: #3a4750;
+    --muted: #6b7680;
+    --line: #e5e0d3;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', ui-sans-serif, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--cream); font-family: var(--sans); color: var(--ink); min-height: 100vh; }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { color: var(--gold-light); }
+  ::selection { background: var(--gold); color: var(--navy); }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,36,56,0.82);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(201,166,104,0.22);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+  }
+  .brand {
+    cursor: pointer; font-family: var(--serif); font-size: 28px; font-weight: 700;
+    letter-spacing: 3px; color: var(--cream);
+  }
+  .nav-right { display: flex; align-items: center; gap: 36px; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-link {
+    cursor: pointer; font-size: 14px; letter-spacing: 1px; color: rgba(246,244,238,0.65);
+    padding-bottom: 4px; border-bottom: 2px solid transparent; transition: color .2s ease;
+    background: none; border-top: none; border-left: none; border-right: none; font-family: var(--sans);
+  }
+  .nav-link:hover { color: var(--cream); }
+  .nav-link.active { color: var(--cream); border-bottom-color: var(--gold); }
+  .lang { display: flex; gap: 6px; border-left: 1px solid rgba(246,244,238,0.2); padding-left: 24px; align-items: center; }
+  .lang button {
+    cursor: pointer; font-size: 12px; letter-spacing: 1px; color: rgba(246,244,238,0.65);
+    background: none; border: none; font-family: var(--sans); font-weight: 400; padding: 2px;
+  }
+  .lang button.active { color: var(--cream); font-weight: 600; }
+  .lang .sep { color: rgba(246,244,238,0.3); font-size: 12px; }
+  .btn-gold {
+    cursor: pointer; background: var(--gold); color: var(--navy); font-size: 12px; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 11px 24px; border-radius: 100px; font-weight: 600;
+    border: none; font-family: var(--sans); transition: transform .25s ease, box-shadow .25s ease;
+    display: inline-block; text-align: center;
+  }
+  .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(201,166,104,0.35); color: var(--navy); }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--cream); margin: 5px 0; transition: .3s; }
+
+  /* generic */
+  .wrap { max-width: 1280px; margin: 0 auto; }
+  .tag { color: var(--gold); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; }
+  h2.section-title { font-family: var(--serif); font-size: 38px; font-weight: 600; margin: 12px 0 0; line-height: 1.15; }
+
+  .img-slot {
+    background: linear-gradient(135deg, #17324a, #0d2438 70%);
+    position: relative; display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .img-slot::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(135deg, rgba(201,166,104,0.06) 0, rgba(201,166,104,0.06) 2px, transparent 2px, transparent 16px);
+  }
+  .img-slot span {
+    position: relative; z-index: 1; color: rgba(246,244,238,0.5); font-size: 12px; letter-spacing: 1px;
+    text-align: center; padding: 20px; font-weight: 300;
+  }
+
+  /* HERO */
+  .hero { display: grid; grid-template-columns: 1fr 1.15fr; min-height: 660px; background: var(--navy); }
+  .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 72px 64px; }
+  .hero-text .tag { margin-bottom: 22px; }
+  .hero-title { font-family: var(--serif); color: var(--cream); font-size: clamp(64px, 9vw, 108px); font-weight: 600; letter-spacing: 8px; line-height: 0.95; }
+  .hero-rule { width: 64px; height: 2px; background: var(--gold); margin: 28px 0; }
+  .hero-sub { color: #cdd3d8; font-size: 20px; max-width: 440px; font-weight: 300; line-height: 1.6; }
+  .hero-ctas { display: flex; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
+  .btn-outline {
+    cursor: pointer; border: 1px solid rgba(246,244,238,0.55); color: var(--cream); padding: 15px 34px;
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 100px;
+    background: none; font-family: var(--sans); transition: background .25s ease;
+  }
+  .btn-outline:hover { background: rgba(246,244,238,0.12); color: var(--cream); }
+  .btn-gold.lg { padding: 15px 34px; }
+  .hero-img { position: relative; min-height: 660px; }
+
+  /* ABOUT */
+  .about { display: grid; grid-template-columns: 1fr 1fr; max-width: 1280px; margin: 0 auto; }
+  .about-text { padding: 100px 64px; display: flex; flex-direction: column; justify-content: center; }
+  .about-title { font-family: var(--serif); font-size: 44px; font-weight: 600; margin-top: 14px; line-height: 1.15; }
+  .about-body { font-size: 16px; line-height: 1.8; color: var(--ink-soft); margin-top: 22px; font-weight: 300; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 32px; margin-top: 40px; }
+  .stat-value { font-family: var(--serif); font-size: 30px; font-weight: 700; color: var(--navy); }
+  .stat-label { font-size: 13px; color: var(--muted); letter-spacing: 0.5px; margin-top: 2px; }
+  .about-img { position: relative; min-height: 560px; }
+
+  /* ONBOARD */
+  .onboard { background: var(--navy); padding: 90px 48px; }
+  .center-head { text-align: center; max-width: 700px; margin: 0 auto 60px; }
+  .onboard .section-title { color: var(--cream); }
+  .onboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1100px; margin: 0 auto; }
+  .onboard-item { text-align: center; padding: 20px; }
+  .onboard-letter {
+    width: 56px; height: 56px; border: 1px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+    font-family: var(--serif); font-size: 22px; color: var(--gold);
+  }
+  .onboard-item .t { color: var(--cream); font-size: 16px; letter-spacing: 0.5px; }
+
+  /* EXC TEASER */
+  .teaser { padding: 100px 48px; max-width: 1280px; margin: 0 auto; }
+  .cards3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .card {
+    cursor: pointer; background: #fff; border-radius: 18px; overflow: hidden;
+    box-shadow: 0 6px 24px rgba(13,36,56,0.08); transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(13,36,56,0.16); }
+  .card .img-slot { height: 220px; }
+  .card-body { padding: 26px; }
+  .card-duration { font-size: 12px; letter-spacing: 1.5px; color: var(--gold); }
+  .card-name { font-family: var(--serif); font-size: 26px; font-weight: 600; margin-top: 8px; }
+  .card-desc { font-size: 14px; color: var(--muted); margin-top: 10px; line-height: 1.6; font-weight: 300; }
+
+  /* REVIEWS */
+  .reviews { background: var(--cream2); padding: 90px 48px; }
+  .reviews .tag { color: #a9884f; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; }
+  .review { background: var(--cream); padding: 34px; border-radius: 18px; border-top: 3px solid var(--gold); box-shadow: 0 6px 24px rgba(13,36,56,0.06); }
+  .review .stars { color: var(--gold); font-size: 15px; letter-spacing: 2px; }
+  .review .quote { font-size: 15px; line-height: 1.7; color: var(--ink-soft); margin-top: 16px; font-style: italic; font-weight: 300; }
+  .review .name { font-size: 13px; color: var(--navy); margin-top: 18px; letter-spacing: 0.5px; }
+
+  /* LOCATION */
+  .location { display: grid; grid-template-columns: 1fr 1fr; max-width: 1280px; margin: 0 auto; }
+  .map-block {
+    position: relative; min-height: 420px; background: #dcd6c4;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .map-block::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(135deg, rgba(13,36,56,0.05) 0, rgba(13,36,56,0.05) 2px, transparent 2px, transparent 14px);
+  }
+  .map-pin { position: relative; text-align: center; }
+  .map-pin .dot { width: 14px; height: 14px; background: var(--gold); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); margin: 0 auto 14px; }
+  .map-pin .lbl { font-family: monospace; font-size: 12px; color: var(--muted); letter-spacing: 0.5px; }
+  .location-text { padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; }
+  .location-title { font-family: var(--serif); font-size: 34px; font-weight: 600; margin-top: 12px; }
+  .location-body { font-size: 15px; line-height: 1.8; color: var(--ink-soft); margin-top: 18px; font-weight: 300; }
+
+  /* CTA BANNER */
+  .cta-banner { background: var(--navy); padding: 90px 48px; text-align: center; }
+  .cta-banner .t { font-family: var(--serif); font-size: 36px; font-weight: 600; color: var(--cream); }
+  .cta-banner .b { font-size: 15px; color: #cdd3d8; margin-top: 14px; font-weight: 300; }
+  .cta-banner .btn-gold { margin-top: 30px; padding: 16px 42px; }
+
+  /* PAGE HEADER */
+  .page-head { position: relative; display: flex; align-items: center; justify-content: center; background: var(--navy); text-align: center; }
+  .page-head.tall { height: 320px; }
+  .page-head.short { height: 260px; }
+  .page-head .title { font-family: var(--serif); font-weight: 700; color: var(--cream); margin-top: 14px; }
+  .page-head.tall .title { font-size: 48px; }
+  .page-head.short .title { font-size: 44px; }
+  .page-head .sub { color: #cdd3d8; font-size: 15px; margin-top: 12px; font-weight: 300; }
+
+  /* EXCURSIONS PAGE */
+  .exc-list { max-width: 1200px; margin: 0 auto; padding: 90px 48px; display: flex; flex-direction: column; gap: 64px; }
+  .exc-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    background: #fff; border-radius: 22px; overflow: hidden; box-shadow: 0 10px 34px rgba(13,36,56,0.09);
+  }
+  .exc-row .img-slot { height: 400px; }
+  .exc-info { padding: 20px 48px 20px 0; }
+  .exc-info .name { font-family: var(--serif); font-size: 32px; font-weight: 600; margin-top: 10px; }
+  .exc-info .desc { font-size: 15px; line-height: 1.75; color: var(--ink-soft); margin-top: 16px; font-weight: 300; }
+  .includes { display: flex; flex-direction: column; gap: 8px; margin-top: 22px; }
+  .includes .inc { font-size: 14px; color: var(--ink-soft); display: flex; gap: 10px; }
+  .includes .inc span { color: var(--gold); }
+  .price-row { display: flex; align-items: baseline; gap: 10px; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .price { font-family: var(--serif); font-size: 28px; font-weight: 700; color: var(--navy); }
+  .price-note { font-size: 12px; color: #8b93a0; }
+  .btn-navy {
+    cursor: pointer; display: inline-block; background: var(--navy); color: var(--cream); padding: 13px 30px;
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 100px; border: none;
+    font-family: var(--sans); margin-top: 20px; transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-navy:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(13,36,56,0.25); color: var(--cream); }
+  .exc-extras { background: var(--cream2); padding: 90px 48px; }
+  .exc-extras-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .exc-extras h3 { font-family: var(--serif); font-size: 28px; font-weight: 600; margin: 0; }
+  .extras-list { display: flex; flex-direction: column; gap: 14px; margin-top: 22px; }
+  .extras-list .ex { font-size: 15px; color: var(--ink-soft); display: flex; gap: 12px; align-items: center; }
+  .extras-list .ex .d { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  .notes-list { display: flex; flex-direction: column; gap: 14px; margin-top: 22px; }
+  .notes-list .n { font-size: 15px; color: var(--ink-soft); line-height: 1.6; font-weight: 300; }
+
+  /* RESERVA */
+  .booking { max-width: 1000px; margin: 0 auto; padding: 80px 48px 120px; }
+  .booking-head { text-align: center; margin-bottom: 56px; }
+  .booking-head .title { font-family: var(--serif); font-size: 42px; font-weight: 700; margin-top: 12px; }
+  .booking-head .sub { color: var(--muted); font-size: 15px; margin-top: 10px; font-weight: 300; }
+  .progress { display: flex; gap: 8px; margin-bottom: 48px; }
+  .progress .seg { flex: 1; height: 3px; background: var(--line); transition: background .3s ease; }
+  .progress .seg.on { background: var(--gold); }
+  .step-title { font-family: var(--serif); font-size: 24px; font-weight: 600; margin-bottom: 24px; }
+  .exc-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .exc-opt { cursor: pointer; padding: 28px 20px; text-align: center; background: #fff; border: 1px solid var(--line); transition: .2s; }
+  .exc-opt:hover { border-color: var(--gold); }
+  .exc-opt.sel { background: var(--navy); border-color: var(--navy); }
+  .exc-opt .d { font-size: 12px; letter-spacing: 1.5px; color: #a9884f; }
+  .exc-opt.sel .d { color: var(--gold); }
+  .exc-opt .n { font-family: var(--serif); font-size: 22px; font-weight: 600; margin-top: 8px; color: var(--ink); }
+  .exc-opt.sel .n { color: var(--cream); }
+  .exc-opt .p { font-size: 13px; margin-top: 8px; color: var(--muted); }
+  .exc-opt.sel .p { color: rgba(246,244,238,0.7); }
+  .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+  .cal-day { text-align: center; padding: 14px 4px; background: #fff; border: 1px solid var(--line); cursor: pointer; transition: .15s; }
+  .cal-day.off { opacity: 0.35; cursor: not-allowed; }
+  .cal-day:not(.off):not(.sel):hover { border-color: var(--gold); }
+  .cal-day.sel { background: var(--navy); border-color: var(--navy); }
+  .cal-day .wd { font-size: 10px; color: #8b93a0; letter-spacing: 0.5px; }
+  .cal-day.sel .wd { color: rgba(246,244,238,0.7); }
+  .cal-day .dn { font-size: 16px; margin-top: 4px; color: var(--ink); font-weight: 500; }
+  .cal-day.sel .dn { color: var(--cream); }
+  .slots { display: flex; flex-direction: column; gap: 12px; }
+  .slot { cursor: pointer; padding: 20px 26px; background: #fff; border: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; transition: .15s; }
+  .slot:not(.sel):hover { border-color: var(--gold); }
+  .slot.sel { background: var(--navy); border-color: var(--navy); }
+  .slot .l { font-size: 16px; color: var(--ink); }
+  .slot.sel .l { color: var(--cream); }
+  .slot .tg { font-size: 13px; color: #8b93a0; }
+  .slot.sel .tg { color: var(--gold); }
+  .step-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+  .step-nav { display: flex; justify-content: space-between; margin-top: 40px; }
+  .step-nav.end { justify-content: flex-end; }
+  .btn-step { cursor: pointer; background: var(--navy); color: var(--cream); padding: 14px 36px; font-size: 13px; letter-spacing: 1px; border: none; font-family: var(--sans); transition: opacity .2s; }
+  .btn-step:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-back { cursor: pointer; border: 1px solid #c7c1b0; color: var(--ink); padding: 14px 36px; font-size: 13px; letter-spacing: 1px; background: none; font-family: var(--sans); }
+  .btn-confirm { cursor: pointer; background: var(--gold); color: var(--navy); padding: 14px 36px; font-size: 13px; letter-spacing: 1px; font-weight: 500; border: none; font-family: var(--sans); transition: opacity .2s; }
+  .btn-confirm:disabled { opacity: 0.4; cursor: not-allowed; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .field label { font-size: 12px; letter-spacing: 1px; color: var(--muted); margin-bottom: 6px; display: block; }
+  .field input, .field textarea {
+    width: 100%; padding: 13px 14px; border: 1px solid #c7c1b0; background: #fff;
+    font-family: var(--sans); font-size: 14px; color: var(--ink);
+  }
+  .field input:focus, .field textarea:focus { outline: none; border-color: var(--gold); }
+  .field.full { grid-column: 1 / -1; }
+  .deposit-note { background: var(--cream2); padding: 20px 24px; margin-top: 26px; font-size: 13px; color: var(--ink-soft); line-height: 1.6; }
+  .booking-confirm { background: #fff; border: 1px solid var(--line); padding: 60px 48px; text-align: center; }
+  .confirm-check {
+    width: 60px; height: 60px; border: 1px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 22px;
+    font-family: var(--serif); font-size: 26px; color: var(--gold);
+  }
+  .confirm-title { font-family: var(--serif); font-size: 30px; font-weight: 600; }
+  .confirm-body { font-size: 15px; color: var(--ink-soft); margin: 14px auto 0; font-weight: 300; max-width: 480px; line-height: 1.7; }
+  .confirm-summary { margin-top: 30px; display: inline-flex; flex-direction: column; gap: 8px; text-align: left; background: var(--cream); padding: 24px 32px; font-size: 14px; color: var(--ink); }
+  .booking-error { color: #b3452c; font-size: 14px; margin-top: 16px; text-align: right; }
+
+  /* CONTACT */
+  .contact-body { max-width: 1100px; margin: 0 auto; padding: 90px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .contact-body h3 { font-family: var(--serif); font-size: 26px; font-weight: 600; margin: 0 0 26px; }
+  .contact-info { display: flex; flex-direction: column; gap: 22px; }
+  .ci-label { font-size: 12px; letter-spacing: 1px; color: var(--gold); }
+  .ci-value { font-size: 17px; margin-top: 4px; line-height: 1.6; }
+  .contact-map { position: relative; margin-top: 40px; height: 220px; background: #dcd6c4; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .contact-form .field { margin-bottom: 18px; }
+  .form-status { display: none; padding: 14px 18px; font-size: 14px; line-height: 1.5; margin-top: 6px; }
+  .form-status.ok { display: block; background: rgba(201,166,104,0.15); color: #7a5f2a; border: 1px solid rgba(201,166,104,0.4); }
+  .form-status.err { display: block; background: rgba(179,69,44,0.1); color: #b3452c; border: 1px solid rgba(179,69,44,0.3); }
+
+  /* FOOTER */
+  .footer { background: var(--navy-deep); padding: 56px 48px 32px; text-align: center; }
+  .footer .fbrand { font-family: var(--serif); font-size: 24px; letter-spacing: 3px; color: var(--cream); }
+  .footer .fline { color: #8b93a0; font-size: 13px; margin-top: 14px; }
+  .footer .fcopy { color: #5c6873; font-size: 12px; margin-top: 20px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav { padding: 14px 20px; }
+    .nav-links, .lang { display: none; }
+    .nav.open .nav-links {
+      display: flex; flex-direction: column; gap: 18px; position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--navy); padding: 24px 20px; border-bottom: 1px solid rgba(201,166,104,0.22);
+    }
+    .nav.open .lang { display: flex; position: absolute; top: 100%; left: 0; right: 0; margin-top: 220px; padding: 0 20px 20px; background: var(--navy); border: none; justify-content: center; }
+    .nav-toggle { display: block; }
+    .nav-right { gap: 12px; }
+    .hero, .about, .location, .exc-row, .contact-body, .exc-extras-grid, .form-grid { grid-template-columns: 1fr; }
+    .hero { min-height: auto; }
+    .hero-text { padding: 56px 28px; }
+    .hero-img, .about-img { min-height: 320px; }
+    .about-text, .location-text { padding: 60px 28px; }
+    .onboard-grid, .cards3, .reviews-grid { grid-template-columns: 1fr; }
+    .onboard, .teaser, .reviews, .cta-banner, .exc-extras { padding: 64px 24px; }
+    .teaser, .exc-list, .booking, .contact-body { padding-left: 24px; padding-right: 24px; }
+    .exc-info { padding: 0 28px 28px; }
+    .exc-row .img-slot { height: 260px; }
+    .exc-opts { grid-template-columns: 1fr; }
+    .cal { gap: 5px; }
+    .cal-day { padding: 10px 2px; }
+    .hero-title { letter-spacing: 4px; }
+    .page-head.tall .title, .page-head.short .title { font-size: 34px; }
+    .about-title { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav" id="nav">
+  <div class="brand" onclick="go('inicio')">ZAFIRO</div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="nav-right">
+    <div class="nav-links">
+      <button class="nav-link" data-page="inicio" data-t="nav.inicio" onclick="go('inicio')"></button>
+      <button class="nav-link" data-page="excursiones" data-t="nav.excursiones" onclick="go('excursiones')"></button>
+      <button class="nav-link" data-page="reserva" data-t="nav.reserva" onclick="go('reserva')"></button>
+      <button class="nav-link" data-page="contacto" data-t="nav.contacto" onclick="go('contacto')"></button>
+    </div>
+    <div class="lang">
+      <button data-lang="es" onclick="setLang('es')">ES</button>
+      <span class="sep">/</span>
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+      <span class="sep">/</span>
+      <button data-lang="de" onclick="setLang('de')">DE</button>
+    </div>
+    <button class="btn-gold" data-t="nav.cta" onclick="go('reserva')"></button>
+  </div>
+</div>
+
+<!-- ================= INICIO ================= -->
+<main id="page-inicio">
+  <section class="hero">
+    <div class="hero-text">
+      <div class="tag" data-t="home.heroTag"></div>
+      <div class="hero-title" data-t="home.heroTitle"></div>
+      <div class="hero-rule"></div>
+      <div class="hero-sub" data-t="home.heroSubtitle"></div>
+      <div class="hero-ctas">
+        <button class="btn-gold lg" data-t="home.heroCta1" onclick="go('reserva')"></button>
+        <button class="btn-outline" data-t="home.heroCta2" onclick="go('excursiones')"></button>
+      </div>
+    </div>
+    <div class="hero-img"><div class="img-slot" style="height:100%"><span>FOTO: Zafiro navegando frente a la costa de Pollença</span></div></div>
+  </section>
+
+  <section class="about">
+    <div class="about-text">
+      <div class="tag" data-t="home.aboutTag"></div>
+      <div class="about-title" data-t="home.aboutTitle"></div>
+      <div class="about-body" data-t="home.aboutBody"></div>
+      <div class="stats" id="home-stats"></div>
+    </div>
+    <div class="about-img"><div class="img-slot" style="height:100%"><span>FOTO: Cubierta y flybridge del Zafiro</span></div></div>
+  </section>
+
+  <section class="onboard">
+    <div class="center-head">
+      <div class="tag" data-t="home.onboardTag"></div>
+      <h2 class="section-title" data-t="home.onboardTitle"></h2>
+    </div>
+    <div class="onboard-grid" id="home-onboard"></div>
+  </section>
+
+  <section class="teaser">
+    <div class="center-head">
+      <div class="tag" data-t="home.excTag"></div>
+      <h2 class="section-title" data-t="home.excTitle"></h2>
+    </div>
+    <div class="cards3" id="home-cards"></div>
+  </section>
+
+  <section class="reviews">
+    <div class="center-head">
+      <div class="tag" data-t="home.reviewsTag"></div>
+      <h2 class="section-title" data-t="home.reviewsTitle"></h2>
+    </div>
+    <div class="reviews-grid" id="home-reviews"></div>
+  </section>
+
+  <section class="location">
+    <div class="map-block">
+      <div class="map-pin"><div class="dot"></div><div class="lbl">MAPA: Real Club Náutico Port de Pollença</div></div>
+    </div>
+    <div class="location-text">
+      <div class="tag" data-t="home.locTag"></div>
+      <div class="location-title" data-t="home.locTitle"></div>
+      <div class="location-body" data-t="home.locBody"></div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="t" data-t="home.ctaBannerTitle"></div>
+    <div class="b" data-t="home.ctaBannerBody"></div>
+    <button class="btn-gold" data-t="home.ctaBannerButton" onclick="go('reserva')"></button>
+  </section>
+</main>
+
+<!-- ================= EXCURSIONES ================= -->
+<main id="page-excursiones" hidden>
+  <section class="page-head tall">
+    <div>
+      <div class="tag" data-t="exc.pageTag"></div>
+      <div class="title" data-t="exc.pageTitle"></div>
+      <div class="sub" data-t="exc.pageSubtitle"></div>
+    </div>
+  </section>
+  <div class="exc-list" id="exc-list"></div>
+  <section class="exc-extras">
+    <div class="exc-extras-grid">
+      <div>
+        <h3 data-t="exc.extrasTitle"></h3>
+        <div class="extras-list" id="exc-extras"></div>
+      </div>
+      <div>
+        <h3 data-t="exc.notesTitle"></h3>
+        <div class="notes-list" id="exc-notes"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= RESERVA ================= -->
+<main id="page-reserva" hidden>
+  <div class="booking">
+    <div class="booking-head">
+      <div class="tag" data-t="res.pageTag"></div>
+      <div class="title" data-t="res.pageTitle"></div>
+      <div class="sub" data-t="res.pageSubtitle"></div>
+    </div>
+    <div id="booking-body"></div>
+  </div>
+</main>
+
+<!-- ================= CONTACTO ================= -->
+<main id="page-contacto" hidden>
+  <section class="page-head short">
+    <div>
+      <div class="tag" data-t="contact.pageTag"></div>
+      <div class="title" data-t="contact.pageTitle"></div>
+    </div>
+  </section>
+  <div class="contact-body">
+    <div>
+      <h3 data-t="contact.infoTitle"></h3>
+      <div class="contact-info">
+        <div><div class="ci-label" data-t="contact.phoneLabel"></div><div class="ci-value"><a href="tel:+34633952154">+34 633 95 21 54</a></div></div>
+        <div><div class="ci-label" data-t="contact.emailLabel"></div><div class="ci-value"><a href="mailto:zafiroboat@gmail.com">zafiroboat@gmail.com</a></div></div>
+        <div><div class="ci-label" data-t="contact.locationLabel"></div><div class="ci-value">Real Club Náutico Port de Pollença<br>07470 Port de Pollença, Mallorca</div></div>
+      </div>
+      <div class="contact-map">
+        <div class="map-pin"><div class="dot"></div><div class="lbl">MAPA: RCNPP, Port de Pollença</div></div>
+      </div>
+    </div>
+    <div>
+      <h3 data-t="contact.formTitle"></h3>
+      <form class="contact-form" id="contact-form" novalidate>
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="field"><label data-t="contact.labelName"></label><input type="text" name="nombre"></div>
+        <div class="field"><label data-t="contact.labelEmail"></label><input type="email" name="email"></div>
+        <div class="field"><label data-t="contact.labelMessage"></label><textarea name="mensaje" rows="5"></textarea></div>
+        <div class="form-status" id="contact-status"></div>
+        <button type="submit" class="btn-navy" id="contact-btn" style="margin-top:6px"></button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="fbrand">ZAFIRO</div>
+  <div class="fline">Puerto de Pollença, Mallorca · +34 633 95 21 54 · zafiroboat@gmail.com</div>
+  <div class="fcopy">© 2026 Zafiro Boat</div>
+</footer>
+
+<script>
+/* ==== CONFIG: envío de formularios ====
+   Contacto y reservas se envían a zafiroboat@gmail.com vía FormSubmit (sin servidor).
+   La PRIMERA vez que llegue un envío, FormSubmit manda un email de activación a ese
+   buzón — hay que pulsar "Activate" una sola vez. No hay ninguna clave en el código. */
+var FORM_ENDPOINT = 'https://formsubmit.co/ajax/zafiroboat@gmail.com';
+
+var I18N = {
+  es: {
+    nav: { inicio: 'Inicio', excursiones: 'Excursiones', reserva: 'Reserva', contacto: 'Contacto', cta: 'Reservar' },
+    home: {
+      heroTag: 'PUERTO DE POLLENÇA · MALLORCA', heroTitle: 'ZAFIRO',
+      heroSubtitle: 'Excursiones privadas en barco por la costa norte de Mallorca. Un día en el mar, a su ritmo.',
+      heroCta1: 'Reservar ahora', heroCta2: 'Ver excursiones',
+      aboutTag: 'EL BARCO', aboutTitle: 'Un Princess 37 Clásico con alma local',
+      aboutBody: 'Zafiro combina la elegancia de un clásico con la comodidad de un crucero moderno. Navegamos cerca de la costa con paradas en calas escondidas, guiados por un patrón que conoce cada rincón del norte de Mallorca. Todo incluido: paddle surf, kayaks y más juguetes a bordo.',
+      aboutStats: [ { value: '12.7 m', label: 'Eslora' }, { value: '11 pax', label: 'Capacidad' }, { value: '3', label: 'Paradas por ruta' }, { value: 'Todo incluido', label: 'En el precio' } ],
+      onboardTag: 'A BORDO', onboardTitle: 'Todo lo que necesita para un gran día',
+      onboardItems: [ { letter: 'S', title: 'Snorkel' }, { letter: 'P', title: 'Paddle Surf' }, { letter: 'K', title: 'Kayaks' }, { letter: 'B', title: 'Bebidas y snacks' }, { letter: 'M', title: 'Música a bordo' }, { letter: 'C', title: 'Patrón profesional' } ],
+      excTag: 'EXPERIENCIAS', excTitle: 'Elija su excursión',
+      excCards: [
+        { duration: '4 HORAS', name: 'Medio Día', desc: 'Tres paradas en calas vírgenes para nadar y hacer snorkel.', ph: 'FOTO: Excursión medio día' },
+        { duration: '7 HORAS', name: 'Día Completo', desc: 'La ruta íntegra del norte de Mallorca, sin prisas.', ph: 'FOTO: Excursión día completo' },
+        { duration: '3 HORAS', name: 'Sunset', desc: 'El mejor atardecer de Mallorca, copa en mano.', ph: 'FOTO: Excursión sunset' } ],
+      reviewsTag: 'CLIENTES', reviewsTitle: 'Su experiencia',
+      reviews: [ { quote: 'Un día perfecto. El patrón conocía cada cala y todo estuvo cuidado al detalle.', name: 'Laura M.' }, { quote: 'Sensación de barco privado de verdad. Repetiremos sin duda.', name: 'Thomas B.' }, { quote: 'Los niños encantados con los kayaks y el paddle surf. Muy recomendable.', name: 'Anke S.' } ],
+      locTag: 'BASE', locTitle: 'Puerto de Pollença',
+      locBody: 'Zarpamos desde el Real Club Náutico de Port de Pollença, punto de partida perfecto para explorar Formentor y las calas del norte de la isla.',
+      ctaBannerTitle: 'Reserve su día en el mar', ctaBannerBody: 'Plazas limitadas por salida. Confirme su fecha en pocos minutos.', ctaBannerButton: 'Reservar ahora',
+    },
+    exc: {
+      pageTag: 'EXCURSIONES Y PRECIOS', pageTitle: 'Nuestras Excursiones', pageSubtitle: 'Tres formas de vivir el mar a bordo de Zafiro',
+      cards: [
+        { ph: 'FOTO: Medio día en Zafiro', duration: '4 HORAS', name: 'Medio Día', desc: 'Salida de mañana o tarde con tres paradas en calas escondidas del norte de Mallorca. Ideal para nadar, hacer snorkel y disfrutar del sol.', includes: ['Patrón profesional', 'Paddle surf y kayaks', 'Bebidas y snacks a bordo', '3 paradas en cala'], price: 'Desde 490 €', priceNote: 'por embarcación · hasta 11 pax' },
+        { ph: 'FOTO: Día completo en Zafiro', duration: '7 HORAS', name: 'Día Completo', desc: 'La experiencia íntegra: recorremos toda la costa norte hasta Formentor, con tiempo de sobra en cada parada.', includes: ['Patrón profesional', 'Paddle surf y kayaks', 'Bebidas, snacks y almuerzo ligero', '3 paradas + Formentor'], price: 'Desde 790 €', priceNote: 'por embarcación · hasta 11 pax' },
+        { ph: 'FOTO: Excursión sunset en Zafiro', duration: '3 HORAS', name: 'Sunset', desc: 'Salida al atardecer con música suave y el mejor cielo de Mallorca de fondo. Perfecta para celebraciones.', includes: ['Patrón profesional', 'Copa de bienvenida', 'Música a bordo', '1 parada panorámica'], price: 'Desde 350 €', priceNote: 'por embarcación · hasta 11 pax' } ],
+      reserveBtn: 'Reservar esta excursión',
+      extrasTitle: 'Extras a bordo', extras: ['Bebidas y snacks incluidos', 'Snorkel, paddle surf y kayaks', 'Música a bordo', 'Toallas y hielo'],
+      notesTitle: 'Buena información', notes: ['Reserva con depósito del 20%; el resto se abona a bordo.', 'Cancelación gratuita hasta 7 días antes de la salida.', 'En caso de mal tiempo, reprogramamos o reembolsamos.'],
+    },
+    res: {
+      pageTag: 'RESERVA', pageTitle: 'Reserve su excursión', pageSubtitle: 'Elija fecha y hora; su plaza queda bloqueada al confirmar',
+      step1Title: '1. Elija su excursión', step2Title: '2. Elija la fecha', step3Title: '3. Elija el horario', step4Title: '4. Sus datos',
+      next: 'Siguiente', back: 'Atrás', confirmBtn: 'Confirmar y pagar depósito', available: 'Disponible',
+      labelExcursion: 'Excursión', labelDate: 'Fecha', labelSlot: 'Horario', labelGuests: 'Personas', labelName: 'Nombre completo', labelEmail: 'Email', labelPhone: 'Teléfono / WhatsApp', labelNotes: 'Notas (opcional)',
+      depositNote: 'Al confirmar, quedará reservada su plaza. Le enviaremos un enlace de pago seguro para el depósito del 20%; el resto se abona a bordo.',
+      confirmTitle: '¡Reserva confirmada!', confirmBody: 'Hemos recibido su solicitud. Le contactaremos en breve con el enlace de pago para bloquear la plaza.',
+      newBooking: 'Hacer otra reserva', sendError: 'No se pudo enviar. Inténtelo de nuevo o escríbanos a zafiroboat@gmail.com.',
+    },
+    contact: {
+      pageTag: 'CONTACTO', pageTitle: 'Hablemos', infoTitle: 'Datos de contacto',
+      phoneLabel: 'Teléfono / WhatsApp', emailLabel: 'Email', locationLabel: 'Ubicación',
+      formTitle: 'Envíenos un mensaje', labelName: 'Nombre', labelEmail: 'Email', labelMessage: 'Mensaje', send: 'Enviar mensaje', sent: 'Enviado ✓', sendError: 'No se pudo enviar. Escríbanos a zafiroboat@gmail.com.',
+    },
+  },
+  en: {
+    nav: { inicio: 'Home', excursiones: 'Excursions', reserva: 'Book', contacto: 'Contact', cta: 'Book Now' },
+    home: {
+      heroTag: 'PORT DE POLLENÇA · MALLORCA', heroTitle: 'ZAFIRO',
+      heroSubtitle: 'Private boat excursions along the north coast of Mallorca. A day at sea, at your own pace.',
+      heroCta1: 'Book now', heroCta2: 'View excursions',
+      aboutTag: 'THE BOAT', aboutTitle: 'A Princess 37 Classic with local soul',
+      aboutBody: 'Zafiro pairs classic elegance with the comfort of a modern cruiser. We sail close to shore with stops at hidden coves, guided by a skipper who knows every corner of northern Mallorca. Everything included: paddle boards, kayaks and more toys on board.',
+      aboutStats: [ { value: '12.7 m', label: 'Length' }, { value: '11 pax', label: 'Capacity' }, { value: '3', label: 'Stops per route' }, { value: 'All included', label: 'In the price' } ],
+      onboardTag: 'ON BOARD', onboardTitle: 'Everything for a great day',
+      onboardItems: [ { letter: 'S', title: 'Snorkelling' }, { letter: 'P', title: 'Paddle boards' }, { letter: 'K', title: 'Kayaks' }, { letter: 'B', title: 'Drinks & snacks' }, { letter: 'M', title: 'Music on board' }, { letter: 'C', title: 'Professional skipper' } ],
+      excTag: 'EXPERIENCES', excTitle: 'Choose your excursion',
+      excCards: [
+        { duration: '4 HOURS', name: 'Half Day', desc: 'Three stops at untouched coves for swimming and snorkelling.', ph: 'PHOTO: Half day excursion' },
+        { duration: '7 HOURS', name: 'Full Day', desc: 'The full northern Mallorca route, unhurried.', ph: 'PHOTO: Full day excursion' },
+        { duration: '3 HOURS', name: 'Sunset', desc: "Mallorca's finest sunset, drink in hand.", ph: 'PHOTO: Sunset excursion' } ],
+      reviewsTag: 'GUESTS', reviewsTitle: 'Their experience',
+      reviews: [ { quote: 'A perfect day. The skipper knew every cove and every detail was taken care of.', name: 'Laura M.' }, { quote: 'A true private-yacht feeling. We will absolutely be back.', name: 'Thomas B.' }, { quote: 'The kids loved the kayaks and paddle boards. Highly recommended.', name: 'Anke S.' } ],
+      locTag: 'BASE', locTitle: 'Port de Pollença',
+      locBody: 'We sail from the Real Club Náutico de Port de Pollença, the perfect starting point to explore Formentor and the coves of the north.',
+      ctaBannerTitle: 'Book your day at sea', ctaBannerBody: 'Limited spots per sailing. Confirm your date in minutes.', ctaBannerButton: 'Book now',
+    },
+    exc: {
+      pageTag: 'EXCURSIONS & PRICING', pageTitle: 'Our Excursions', pageSubtitle: 'Three ways to enjoy the sea aboard Zafiro',
+      cards: [
+        { ph: 'PHOTO: Half day on Zafiro', duration: '4 HOURS', name: 'Half Day', desc: 'Morning or afternoon sailing with three stops at hidden coves in northern Mallorca. Ideal for swimming, snorkelling and sun.', includes: ['Professional skipper', 'Paddle boards and kayaks', 'Drinks and snacks on board', '3 cove stops'], price: 'From €490', priceNote: 'per boat · up to 11 pax' },
+        { ph: 'PHOTO: Full day on Zafiro', duration: '7 HOURS', name: 'Full Day', desc: 'The complete experience: the entire north coast up to Formentor, with plenty of time at each stop.', includes: ['Professional skipper', 'Paddle boards and kayaks', 'Drinks, snacks and light lunch', '3 stops + Formentor'], price: 'From €790', priceNote: 'per boat · up to 11 pax' },
+        { ph: 'PHOTO: Sunset excursion on Zafiro', duration: '3 HOURS', name: 'Sunset', desc: "An evening sail with soft music and Mallorca's best sky as backdrop. Perfect for celebrations.", includes: ['Professional skipper', 'Welcome drink', 'Music on board', '1 scenic stop'], price: 'From €350', priceNote: 'per boat · up to 11 pax' } ],
+      reserveBtn: 'Book this excursion',
+      extrasTitle: 'On board extras', extras: ['Drinks and snacks included', 'Snorkelling, paddle boards and kayaks', 'Music on board', 'Towels and ice'],
+      notesTitle: 'Good to know', notes: ['Book with a 20% deposit; the rest is paid on board.', 'Free cancellation up to 7 days before departure.', 'In case of bad weather, we reschedule or refund.'],
+    },
+    res: {
+      pageTag: 'BOOKING', pageTitle: 'Book your excursion', pageSubtitle: 'Choose a date and time; your spot locks in once confirmed',
+      step1Title: '1. Choose your excursion', step2Title: '2. Choose a date', step3Title: '3. Choose a time', step4Title: '4. Your details',
+      next: 'Next', back: 'Back', confirmBtn: 'Confirm and pay deposit', available: 'Available',
+      labelExcursion: 'Excursion', labelDate: 'Date', labelSlot: 'Time', labelGuests: 'Guests', labelName: 'Full name', labelEmail: 'Email', labelPhone: 'Phone / WhatsApp', labelNotes: 'Notes (optional)',
+      depositNote: 'Once confirmed, your spot is reserved. We will send a secure payment link for the 20% deposit; the rest is paid on board.',
+      confirmTitle: 'Booking confirmed!', confirmBody: 'We have received your request. We will contact you shortly with the payment link to lock in your spot.',
+      newBooking: 'Make another booking', sendError: 'Could not send. Please try again or email zafiroboat@gmail.com.',
+    },
+    contact: {
+      pageTag: 'CONTACT', pageTitle: "Let's talk", infoTitle: 'Contact details',
+      phoneLabel: 'Phone / WhatsApp', emailLabel: 'Email', locationLabel: 'Location',
+      formTitle: 'Send us a message', labelName: 'Name', labelEmail: 'Email', labelMessage: 'Message', send: 'Send message', sent: 'Sent ✓', sendError: 'Could not send. Please email zafiroboat@gmail.com.',
+    },
+  },
+  de: {
+    nav: { inicio: 'Start', excursiones: 'Ausflüge', reserva: 'Buchen', contacto: 'Kontakt', cta: 'Jetzt buchen' },
+    home: {
+      heroTag: 'PORT DE POLLENÇA · MALLORCA', heroTitle: 'ZAFIRO',
+      heroSubtitle: 'Private Bootsausflüge entlang der Nordküste Mallorcas. Ein Tag auf dem Meer, in Ihrem Tempo.',
+      heroCta1: 'Jetzt buchen', heroCta2: 'Ausflüge ansehen',
+      aboutTag: 'DAS BOOT', aboutTitle: 'Ein Princess 37 Classic mit lokaler Seele',
+      aboutBody: 'Zafiro verbindet klassische Eleganz mit dem Komfort eines modernen Cruisers. Wir fahren küstennah mit Stopps an versteckten Buchten, geführt von einem Skipper, der jeden Winkel Nordmallorcas kennt. Alles inklusive: Paddleboards, Kajaks und mehr an Bord.',
+      aboutStats: [ { value: '12,7 m', label: 'Länge' }, { value: '11 Pax', label: 'Kapazität' }, { value: '3', label: 'Stopps pro Route' }, { value: 'Alles inklusive', label: 'Im Preis' } ],
+      onboardTag: 'AN BORD', onboardTitle: 'Alles für einen tollen Tag',
+      onboardItems: [ { letter: 'S', title: 'Schnorcheln' }, { letter: 'P', title: 'Paddleboards' }, { letter: 'K', title: 'Kajaks' }, { letter: 'B', title: 'Getränke & Snacks' }, { letter: 'M', title: 'Musik an Bord' }, { letter: 'C', title: 'Professioneller Skipper' } ],
+      excTag: 'ERLEBNISSE', excTitle: 'Wählen Sie Ihren Ausflug',
+      excCards: [
+        { duration: '4 STUNDEN', name: 'Halber Tag', desc: 'Drei Stopps an unberührten Buchten zum Schwimmen und Schnorcheln.', ph: 'FOTO: Halbtagesausflug' },
+        { duration: '7 STUNDEN', name: 'Ganzer Tag', desc: 'Die komplette Route entlang Nordmallorcas, ganz ohne Eile.', ph: 'FOTO: Ganztagesausflug' },
+        { duration: '3 STUNDEN', name: 'Sunset', desc: 'Mallorcas schönster Sonnenuntergang, Glas in der Hand.', ph: 'FOTO: Sunset-Ausflug' } ],
+      reviewsTag: 'GÄSTE', reviewsTitle: 'Ihre Erfahrung',
+      reviews: [ { quote: 'Ein perfekter Tag. Der Skipper kannte jede Bucht, alles war bis ins Detail durchdacht.', name: 'Laura M.' }, { quote: 'Echtes Privatyacht-Gefühl. Wir kommen definitiv wieder.', name: 'Thomas B.' }, { quote: 'Die Kinder liebten die Kajaks und Paddleboards. Sehr empfehlenswert.', name: 'Anke S.' } ],
+      locTag: 'BASIS', locTitle: 'Port de Pollença',
+      locBody: 'Wir starten vom Real Club Náutico de Port de Pollença, dem perfekten Ausgangspunkt für Formentor und die Buchten des Nordens.',
+      ctaBannerTitle: 'Buchen Sie Ihren Tag auf See', ctaBannerBody: 'Begrenzte Plätze pro Fahrt. Bestätigen Sie Ihr Datum in wenigen Minuten.', ctaBannerButton: 'Jetzt buchen',
+    },
+    exc: {
+      pageTag: 'AUSFLÜGE & PREISE', pageTitle: 'Unsere Ausflüge', pageSubtitle: 'Drei Arten, das Meer an Bord der Zafiro zu genießen',
+      cards: [
+        { ph: 'FOTO: Halber Tag auf der Zafiro', duration: '4 STUNDEN', name: 'Halber Tag', desc: 'Morgen- oder Nachmittagsfahrt mit drei Stopps an versteckten Buchten Nordmallorcas. Ideal zum Schwimmen, Schnorcheln und Sonnen.', includes: ['Professioneller Skipper', 'Paddleboards und Kajaks', 'Getränke und Snacks an Bord', '3 Buchtstopps'], price: 'Ab 490 €', priceNote: 'pro Boot · bis 11 Pax' },
+        { ph: 'FOTO: Ganzer Tag auf der Zafiro', duration: '7 STUNDEN', name: 'Ganzer Tag', desc: 'Das komplette Erlebnis: die gesamte Nordküste bis Formentor, mit viel Zeit an jedem Stopp.', includes: ['Professioneller Skipper', 'Paddleboards und Kajaks', 'Getränke, Snacks und leichtes Mittagessen', '3 Stopps + Formentor'], price: 'Ab 790 €', priceNote: 'pro Boot · bis 11 Pax' },
+        { ph: 'FOTO: Sunset-Ausflug auf der Zafiro', duration: '3 STUNDEN', name: 'Sunset', desc: 'Abendfahrt mit sanfter Musik und Mallorcas schönstem Himmel im Hintergrund. Perfekt für Feiern.', includes: ['Professioneller Skipper', 'Willkommensdrink', 'Musik an Bord', '1 Panoramastopp'], price: 'Ab 350 €', priceNote: 'pro Boot · bis 11 Pax' } ],
+      reserveBtn: 'Diesen Ausflug buchen',
+      extrasTitle: 'Extras an Bord', extras: ['Getränke und Snacks inklusive', 'Schnorcheln, Paddleboards und Kajaks', 'Musik an Bord', 'Handtücher und Eis'],
+      notesTitle: 'Gut zu wissen', notes: ['Buchung mit 20% Anzahlung; der Rest wird an Bord bezahlt.', 'Kostenlose Stornierung bis 7 Tage vor Abfahrt.', 'Bei schlechtem Wetter verschieben oder erstatten wir.'],
+    },
+    res: {
+      pageTag: 'BUCHUNG', pageTitle: 'Buchen Sie Ihren Ausflug', pageSubtitle: 'Wählen Sie Datum und Uhrzeit; Ihr Platz wird nach Bestätigung reserviert',
+      step1Title: '1. Wählen Sie Ihren Ausflug', step2Title: '2. Datum wählen', step3Title: '3. Uhrzeit wählen', step4Title: '4. Ihre Daten',
+      next: 'Weiter', back: 'Zurück', confirmBtn: 'Bestätigen und Anzahlung leisten', available: 'Verfügbar',
+      labelExcursion: 'Ausflug', labelDate: 'Datum', labelSlot: 'Uhrzeit', labelGuests: 'Personen', labelName: 'Vollständiger Name', labelEmail: 'E-Mail', labelPhone: 'Telefon / WhatsApp', labelNotes: 'Notizen (optional)',
+      depositNote: 'Nach der Bestätigung ist Ihr Platz reserviert. Wir senden Ihnen einen sicheren Zahlungslink für die 20% Anzahlung; der Rest wird an Bord bezahlt.',
+      confirmTitle: 'Buchung bestätigt!', confirmBody: 'Wir haben Ihre Anfrage erhalten und melden uns in Kürze mit dem Zahlungslink zur Reservierung Ihres Platzes.',
+      newBooking: 'Weitere Buchung', sendError: 'Senden fehlgeschlagen. Bitte erneut versuchen oder an zafiroboat@gmail.com schreiben.',
+    },
+    contact: {
+      pageTag: 'KONTAKT', pageTitle: 'Sprechen wir', infoTitle: 'Kontaktdaten',
+      phoneLabel: 'Telefon / WhatsApp', emailLabel: 'E-Mail', locationLabel: 'Standort',
+      formTitle: 'Senden Sie uns eine Nachricht', labelName: 'Name', labelEmail: 'E-Mail', labelMessage: 'Nachricht', send: 'Nachricht senden', sent: 'Gesendet ✓', sendError: 'Senden fehlgeschlagen. Bitte an zafiroboat@gmail.com schreiben.',
+    },
+  },
+};
+
+var EXC = [
+  { id: 'medio',    name: { es: 'Medio Día', en: 'Half Day', de: 'Halber Tag' }, duration: '4H', slots: ['09:00 - 13:00', '14:30 - 18:30'], price: { es: '490 €', en: '€490', de: '490 €' } },
+  { id: 'completo', name: { es: 'Día Completo', en: 'Full Day', de: 'Ganzer Tag' }, duration: '7H', slots: ['09:00 - 16:00'], price: { es: '790 €', en: '€790', de: '790 €' } },
+  { id: 'sunset',   name: { es: 'Sunset', en: 'Sunset', de: 'Sunset' }, duration: '3H', slots: ['18:00 - 21:00'], price: { es: '350 €', en: '€350', de: '350 €' } },
+];
+var WEEKDAYS = {
+  es: ['DOM', 'LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB'],
+  en: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+  de: ['SO', 'MO', 'DI', 'MI', 'DO', 'FR', 'SA'],
+};
+
+var lang = 'es', page = 'inicio';
+var bk = { step: 1, excursion: null, date: null, slot: null, guests: 2, name: '', email: '', phone: '', notes: '', confirmed: false, sending: false };
+
+function T(path) {
+  var o = I18N[lang];
+  path.split('.').forEach(function (k) { o = o && o[k]; });
+  return o == null ? '' : o;
+}
+function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+/* ---------- navegación ---------- */
+function go(p) {
+  page = p;
+  ['inicio', 'excursiones', 'reserva', 'contacto'].forEach(function (name) {
+    document.getElementById('page-' + name).hidden = name !== p;
+  });
+  document.querySelectorAll('.nav-link').forEach(function (b) {
+    b.classList.toggle('active', b.getAttribute('data-page') === p);
+  });
+  document.getElementById('nav').classList.remove('open');
+  if (history.replaceState) history.replaceState(null, '', p === 'inicio' ? location.pathname : '#' + p);
+  window.scrollTo(0, 0);
+}
+
+/* ---------- idioma ---------- */
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.classList.toggle('active', b.getAttribute('data-lang') === l);
+  });
+  applyText();
+  renderHome();
+  renderExcursions();
+  renderBooking();
+  renderContactBtn();
+  try { localStorage.setItem('zafiro_lang', l); } catch (e) {}
+}
+
+function applyText() {
+  document.querySelectorAll('[data-t]').forEach(function (node) {
+    node.textContent = T(node.getAttribute('data-t'));
+  });
+}
+
+/* ---------- HOME dinámico ---------- */
+function renderHome() {
+  var h = I18N[lang].home;
+  var stats = document.getElementById('home-stats'); stats.innerHTML = '';
+  h.aboutStats.forEach(function (s) {
+    var d = el('div');
+    d.appendChild(el('div', 'stat-value', s.value));
+    d.appendChild(el('div', 'stat-label', s.label));
+    stats.appendChild(d);
+  });
+  var ob = document.getElementById('home-onboard'); ob.innerHTML = '';
+  h.onboardItems.forEach(function (it) {
+    var d = el('div', 'onboard-item');
+    d.appendChild(el('div', 'onboard-letter', it.letter));
+    d.appendChild(el('div', 't', it.title));
+    ob.appendChild(d);
+  });
+  var cards = document.getElementById('home-cards'); cards.innerHTML = '';
+  h.excCards.forEach(function (c) {
+    var card = el('div', 'card'); card.onclick = function () { go('excursiones'); };
+    card.innerHTML = '<div class="img-slot"><span>' + esc(c.ph) + '</span></div>' +
+      '<div class="card-body"><div class="card-duration">' + esc(c.duration) + '</div>' +
+      '<div class="card-name">' + esc(c.name) + '</div>' +
+      '<div class="card-desc">' + esc(c.desc) + '</div></div>';
+    cards.appendChild(card);
+  });
+  var rev = document.getElementById('home-reviews'); rev.innerHTML = '';
+  h.reviews.forEach(function (r) {
+    var d = el('div', 'review');
+    d.innerHTML = '<div class="stars">★★★★★</div><div class="quote">' + esc(r.quote) + '</div><div class="name">' + esc(r.name) + '</div>';
+    rev.appendChild(d);
+  });
+}
+
+/* ---------- EXCURSIONES dinámico ---------- */
+function renderExcursions() {
+  var e = I18N[lang].exc;
+  var list = document.getElementById('exc-list'); list.innerHTML = '';
+  e.cards.forEach(function (c) {
+    var row = el('div', 'exc-row');
+    var inc = c.includes.map(function (i) { return '<div class="inc"><span>—</span>' + esc(i) + '</div>'; }).join('');
+    row.innerHTML =
+      '<div class="img-slot"><span>' + esc(c.ph) + '</span></div>' +
+      '<div class="exc-info">' +
+        '<div class="card-duration">' + esc(c.duration) + '</div>' +
+        '<div class="name">' + esc(c.name) + '</div>' +
+        '<div class="desc">' + esc(c.desc) + '</div>' +
+        '<div class="includes">' + inc + '</div>' +
+        '<div class="price-row"><div class="price">' + esc(c.price) + '</div><div class="price-note">' + esc(c.priceNote) + '</div></div>' +
+        '<button class="btn-navy">' + esc(e.reserveBtn) + '</button>' +
+      '</div>';
+    row.querySelector('.btn-navy').onclick = function () { go('reserva'); };
+    list.appendChild(row);
+  });
+  var ex = document.getElementById('exc-extras'); ex.innerHTML = '';
+  e.extras.forEach(function (x) {
+    var d = el('div', 'ex'); d.innerHTML = '<div class="d"></div>' + esc(x); ex.appendChild(d);
+  });
+  var no = document.getElementById('exc-notes'); no.innerHTML = '';
+  e.notes.forEach(function (n) { no.appendChild(el('div', 'n', n)); });
+}
+
+/* ---------- RESERVA ---------- */
+function buildCalendar() {
+  var days = [], today = new Date();
+  for (var i = 1; i <= 21; i++) {
+    var d = new Date(today); d.setDate(today.getDate() + i);
+    var iso = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    var unavailable = (d.getDay() === 1) || (i % 9 === 0);
+    days.push({ iso: iso, date: d, unavailable: unavailable });
+  }
+  return days;
+}
+function excName(id) { var e = EXC.find(function (x) { return x.id === id; }); return e ? e.name[lang] : ''; }
+function dateLabel(iso) {
+  if (!iso) return '';
+  var loc = lang === 'en' ? 'en-GB' : lang === 'de' ? 'de-DE' : 'es-ES';
+  return new Date(iso + 'T00:00:00').toLocaleDateString(loc, { day: 'numeric', month: 'long' });
+}
+
+function renderBooking() {
+  var box = document.getElementById('booking-body');
+  var r = I18N[lang].res;
+  box.innerHTML = '';
+
+  if (bk.confirmed) {
+    var c = el('div', 'booking-confirm');
+    c.innerHTML =
+      '<div class="confirm-check">✓</div>' +
+      '<div class="confirm-title">' + esc(r.confirmTitle) + '</div>' +
+      '<div class="confirm-body">' + esc(r.confirmBody) + '</div>' +
+      '<div class="confirm-summary">' +
+        '<div><b>' + esc(r.labelExcursion) + ':</b> ' + esc(excName(bk.excursion)) + '</div>' +
+        '<div><b>' + esc(r.labelDate) + ':</b> ' + esc(dateLabel(bk.date)) + '</div>' +
+        '<div><b>' + esc(r.labelSlot) + ':</b> ' + esc(bk.slot || '') + '</div>' +
+        '<div><b>' + esc(r.labelGuests) + ':</b> ' + esc(bk.guests) + '</div>' +
+        '<div><b>' + esc(r.labelName) + ':</b> ' + esc(bk.name) + '</div>' +
+      '</div>' +
+      '<div><button class="btn-back" style="margin-top:30px" id="new-booking">' + esc(r.newBooking) + '</button></div>';
+    box.appendChild(c);
+    document.getElementById('new-booking').onclick = function () {
+      bk = { step: 1, excursion: null, date: null, slot: null, guests: 2, name: '', email: '', phone: '', notes: '', confirmed: false, sending: false };
+      renderBooking();
+    };
+    return;
+  }
+
+  // progress
+  var prog = el('div', 'progress');
+  for (var i = 1; i <= 4; i++) { var seg = el('div', 'seg' + (bk.step >= i ? ' on' : '')); prog.appendChild(seg); }
+  box.appendChild(prog);
+
+  var wrap = el('div');
+  if (bk.step === 1) {
+    wrap.appendChild(el('div', 'step-title', r.step1Title));
+    var opts = el('div', 'exc-opts');
+    EXC.forEach(function (def) {
+      var sel = bk.excursion === def.id;
+      var o = el('div', 'exc-opt' + (sel ? ' sel' : ''));
+      o.innerHTML = '<div class="d">' + esc(def.duration) + '</div><div class="n">' + esc(def.name[lang]) + '</div><div class="p">' + esc(def.price[lang]) + '</div>';
+      o.onclick = function () { bk.excursion = def.id; renderBooking(); };
+      opts.appendChild(o);
+    });
+    wrap.appendChild(opts);
+    var nav1 = el('div', 'step-nav end');
+    var next1 = el('button', 'btn-step', r.next); next1.disabled = !bk.excursion;
+    next1.onclick = function () { if (bk.excursion) { bk.step = 2; renderBooking(); } };
+    nav1.appendChild(next1); wrap.appendChild(nav1);
+  } else if (bk.step === 2) {
+    wrap.appendChild(el('div', 'step-title', r.step2Title));
+    var cal = el('div', 'cal');
+    buildCalendar().forEach(function (d) {
+      var sel = bk.date === d.iso;
+      var cell = el('div', 'cal-day' + (d.unavailable ? ' off' : '') + (sel ? ' sel' : ''));
+      cell.innerHTML = '<div class="wd">' + WEEKDAYS[lang][d.date.getDay()] + '</div><div class="dn">' + d.date.getDate() + '</div>';
+      if (!d.unavailable) cell.onclick = function () { bk.date = d.iso; bk.slot = null; renderBooking(); };
+      cal.appendChild(cell);
+    });
+    wrap.appendChild(cal);
+    wrap.appendChild(stepNav(function () { bk.step = 1; renderBooking(); }, function () { if (bk.date) { bk.step = 3; renderBooking(); } }, !bk.date));
+  } else if (bk.step === 3) {
+    wrap.appendChild(el('div', 'step-title', r.step3Title));
+    wrap.appendChild(el('div', 'step-sub', dateLabel(bk.date) + ' — ' + excName(bk.excursion)));
+    var slots = el('div', 'slots');
+    var def = EXC.find(function (x) { return x.id === bk.excursion; });
+    (def ? def.slots : []).forEach(function (label) {
+      var sel = bk.slot === label;
+      var s = el('div', 'slot' + (sel ? ' sel' : ''));
+      s.innerHTML = '<div class="l">' + esc(label) + '</div><div class="tg">' + (sel ? '✓' : esc(r.available)) + '</div>';
+      s.onclick = function () { bk.slot = label; renderBooking(); };
+      slots.appendChild(s);
+    });
+    wrap.appendChild(slots);
+    wrap.appendChild(stepNav(function () { bk.step = 2; renderBooking(); }, function () { if (bk.slot) { bk.step = 4; renderBooking(); } }, !bk.slot));
+  } else if (bk.step === 4) {
+    wrap.appendChild(el('div', 'step-title', r.step4Title));
+    wrap.appendChild(el('div', 'step-sub', excName(bk.excursion) + ' · ' + dateLabel(bk.date) + ' · ' + (bk.slot || '')));
+    var grid = el('div', 'form-grid');
+    grid.innerHTML =
+      field(r.labelName, 'text', 'name', bk.name) +
+      field(r.labelEmail, 'email', 'email', bk.email) +
+      field(r.labelPhone, 'text', 'phone', bk.phone) +
+      field(r.labelGuests, 'number', 'guests', bk.guests, 'min="1" max="11"') +
+      '<div class="field full"><label>' + esc(r.labelNotes) + '</label><textarea rows="3" data-bk="notes">' + esc(bk.notes) + '</textarea></div>';
+    wrap.appendChild(grid);
+    grid.querySelectorAll('[data-bk]').forEach(function (inp) {
+      inp.addEventListener('input', function () { bk[inp.getAttribute('data-bk')] = inp.value; updateConfirmState(); });
+    });
+    wrap.appendChild(el('div', 'deposit-note', r.depositNote));
+    var errBox = el('div', 'booking-error'); errBox.id = 'bk-error'; errBox.style.display = 'none'; errBox.textContent = r.sendError;
+    wrap.appendChild(errBox);
+    var nav4 = el('div', 'step-nav');
+    var back4 = el('button', 'btn-back', r.back); back4.onclick = function () { bk.step = 3; renderBooking(); };
+    var conf = el('button', 'btn-confirm', r.confirmBtn); conf.id = 'bk-confirm';
+    conf.disabled = !(bk.name && bk.email);
+    conf.onclick = submitBooking;
+    nav4.appendChild(back4); nav4.appendChild(conf);
+    wrap.appendChild(nav4);
+  }
+  box.appendChild(wrap);
+}
+function field(label, type, key, val, extra) {
+  return '<div class="field"><label>' + esc(label) + '</label><input type="' + type + '" ' + (extra || '') + ' value="' + esc(String(val)) + '" data-bk="' + key + '"></div>';
+}
+function stepNav(onBack, onNext, disabled) {
+  var r = I18N[lang].res;
+  var nav = el('div', 'step-nav');
+  var b = el('button', 'btn-back', r.back); b.onclick = onBack;
+  var n = el('button', 'btn-step', r.next); n.disabled = disabled; n.onclick = onNext;
+  nav.appendChild(b); nav.appendChild(n);
+  return nav;
+}
+function updateConfirmState() {
+  var c = document.getElementById('bk-confirm');
+  if (c) c.disabled = !(bk.name && bk.email);
+}
+function submitBooking() {
+  if (!(bk.name && bk.email) || bk.sending) return;
+  bk.sending = true;
+  var btn = document.getElementById('bk-confirm');
+  var err = document.getElementById('bk-error');
+  if (btn) { btn.disabled = true; btn.textContent = '…'; }
+  var data = new FormData();
+  data.append('_subject', 'Nueva reserva web — Zafiro Boat');
+  data.append('Tipo', 'RESERVA');
+  data.append('Excursion', excName(bk.excursion));
+  data.append('Fecha', dateLabel(bk.date) + ' (' + bk.date + ')');
+  data.append('Horario', bk.slot || '');
+  data.append('Personas', bk.guests);
+  data.append('Nombre', bk.name);
+  data.append('Email', bk.email);
+  data.append('Telefono', bk.phone);
+  data.append('Notas', bk.notes);
+  data.append('_template', 'table');
+  data.append('_captcha', 'false');
+  fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+    .then(function (res) {
+      bk.sending = false;
+      if (res.ok) { bk.confirmed = true; renderBooking(); }
+      else { if (err) err.style.display = 'block'; if (btn) { btn.disabled = false; btn.textContent = I18N[lang].res.confirmBtn; } }
+    })
+    .catch(function () {
+      bk.sending = false;
+      if (err) err.style.display = 'block';
+      if (btn) { btn.disabled = false; btn.textContent = I18N[lang].res.confirmBtn; }
+    });
+}
+
+/* ---------- CONTACTO ---------- */
+function renderContactBtn() {
+  var btn = document.getElementById('contact-btn');
+  if (btn && !btn.dataset.sent) btn.textContent = I18N[lang].contact.send;
+}
+(function () {
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('contact-status');
+  var btn = document.getElementById('contact-btn');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nombre = form.nombre.value.trim();
+    var email = form.email.value.trim();
+    status.className = 'form-status';
+    if (nombre.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      status.className = 'form-status err';
+      status.textContent = lang === 'en' ? 'Please fill in your name and a valid email.' : lang === 'de' ? 'Bitte Namen und gültige E-Mail angeben.' : 'Indica tu nombre y un email válido.';
+      return;
+    }
+    btn.disabled = true;
+    var data = new FormData(form);
+    data.append('_subject', 'Nuevo mensaje web — Zafiro Boat');
+    data.append('_template', 'table');
+    data.append('_captcha', 'false');
+    fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+      .then(function (res) {
+        btn.disabled = false;
+        if (res.ok) {
+          form.reset();
+          btn.dataset.sent = '1'; btn.textContent = I18N[lang].contact.sent;
+          setTimeout(function () { delete btn.dataset.sent; btn.textContent = I18N[lang].contact.send; }, 4000);
+        } else { status.className = 'form-status err'; status.textContent = I18N[lang].contact.sendError; }
+      })
+      .catch(function () { btn.disabled = false; status.className = 'form-status err'; status.textContent = I18N[lang].contact.sendError; });
+  });
+})();
+
+/* ---------- init ---------- */
+document.getElementById('navToggle').addEventListener('click', function () {
+  document.getElementById('nav').classList.toggle('open');
+});
+(function init() {
+  var saved = null;
+  try { saved = localStorage.getItem('zafiro_lang'); } catch (e) {}
+  var h = location.hash.replace('#', '');
+  setLang(saved && I18N[saved] ? saved : 'es');
+  if (['excursiones', 'reserva', 'contacto'].indexOf(h) >= 0) go(h); else go('inicio');
+})();
+</script>
+</body>
+</html>
