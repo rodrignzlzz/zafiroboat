@@ -75,13 +75,15 @@
   .nav-link:hover::after, .nav-link.active::after { width: 100%; }
   .nav.solid .nav-link { color: var(--ink-soft); }
   .nav.solid .nav-link:hover, .nav.solid .nav-link.active { color: var(--navy); }
-  .lang { display: flex; gap: 5px; align-items: center; }
-  .lang button { cursor: pointer; font-family: var(--display); font-size: 12px; letter-spacing: 1px; color: rgba(255,255,255,0.7); background: none; border: none; padding: 2px 3px; font-weight: 400; }
-  .lang button.active { color: var(--gold); font-weight: 600; }
-  .lang .sep { color: rgba(255,255,255,0.35); font-size: 11px; }
-  .nav.solid .lang button { color: var(--muted); }
-  .nav.solid .lang button.active { color: var(--gold); }
-  .nav.solid .lang .sep { color: var(--line); }
+  .lang { display: flex; align-items: center; gap: 4px; padding: 4px; background: rgba(255,255,255,0.14); border-radius: 999px; }
+  .lang-btn { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-family: var(--display); font-size: 11px; letter-spacing: 1px; font-weight: 500; color: rgba(255,255,255,0.85); background: transparent; border: none; border-radius: 999px; padding: 6px 11px; transition: background .2s ease, color .2s ease; }
+  .lang-btn svg { display: block; flex-shrink: 0; border-radius: 2px; }
+  .lang-btn:hover { color: #fff; }
+  .lang-btn.active { background: #fff; color: var(--navy); }
+  .nav.solid .lang { background: rgba(13,36,56,0.07); }
+  .nav.solid .lang-btn { color: var(--ink-soft); }
+  .nav.solid .lang-btn:hover { color: var(--navy); }
+  .nav.solid .lang-btn.active { background: var(--navy); color: #fff; }
   .nav .btn { padding: 11px 24px; font-size: 11.5px; }
   .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; z-index: 101; }
   .nav-toggle span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; transition: .3s; }
@@ -120,7 +122,8 @@
   .onboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); }
   .ob-item { background: var(--navy); padding: 42px 28px; text-align: center; transition: background .3s ease; }
   .ob-item:hover { background: #10293f; }
-  .ob-letter { width: 54px; height: 54px; border: 1px solid rgba(201,166,104,0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-family: var(--display); font-size: 20px; color: var(--gold); }
+  .ob-letter { width: 56px; height: 56px; border: 1px solid rgba(201,166,104,0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; color: var(--gold); }
+  .ob-letter svg { width: 26px; height: 26px; }
   .ob-item .t { font-size: 15px; letter-spacing: 0.5px; color: #eef1f3; }
 
   /* ---- EXCURSIONS ---- */
@@ -206,16 +209,14 @@
   /* ---- RESPONSIVE ---- */
   @media (max-width: 900px) {
     .wrap { padding: 0 22px; }
-    .nav { padding: 16px 22px; }
-    .nav.solid { padding: 12px 22px; }
-    .nav-links, .lang { display: none; }
-    .nav.open .nav-links { display: flex; flex-direction: column; gap: 22px; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); padding: 28px 22px; }
-    .nav.open .nav-link { color: #fff; font-size: 16px; }
-    .nav.open .lang { display: flex; position: absolute; top: 100%; left: 0; right: 0; margin-top: 210px; padding: 0 22px 24px; background: var(--navy); justify-content: center; }
-    .nav.open .lang button { color: rgba(255,255,255,0.8); }
-    .nav.open .lang button.active { color: var(--gold); }
-    .nav-toggle { display: block; }
-    .nav-right { gap: 14px; }
+    .nav { padding: 14px 16px; }
+    .nav.solid { padding: 11px 16px; }
+    .nav-right { gap: 12px; }
+    .brand { font-size: 20px; letter-spacing: 3px; }
+    .nav-link { font-size: 12.5px; }
+    .lang { gap: 3px; padding: 3px; }
+    .lang-btn { gap: 5px; padding: 6px 9px; }
+    .nav .btn.nav-reservas { padding: 10px 18px; }
     .split, .split.reverse .split-media { grid-template-columns: 1fr; }
     .split.reverse .split-media { order: 0; }
     .split-media img { aspect-ratio: 16 / 11; }
@@ -228,6 +229,11 @@
   @media (max-width: 520px) {
     .onboard-grid { grid-template-columns: 1fr; }
     .hero-ctas .btn { width: 100%; }
+    .brand { font-size: 17px; letter-spacing: 2px; }
+    .nav-link { font-size: 11.5px; }
+    .lang-btn { font-size: 0; letter-spacing: 0; gap: 0; padding: 6px 7px; }
+    .nav .btn.nav-reservas { padding: 9px 15px; font-size: 10.5px; }
+    .nav-right { gap: 9px; }
   }
 </style>
 </head>
@@ -236,21 +242,14 @@
 <!-- ================= NAV ================= -->
 <div class="nav" id="nav">
   <div class="brand" onclick="goSection('top')">ZAFIRO</div>
-  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   <div class="nav-right">
-    <div class="nav-links">
-      <button class="nav-link" data-sec="top" data-t="nav.inicio" onclick="goSection('top')"></button>
-      <button class="nav-link" data-sec="barco" data-t="nav.barco" onclick="goSection('barco')"></button>
-      <button class="nav-link" data-sec="excursiones" data-t="nav.excursiones" onclick="goSection('excursiones')"></button>
-      <button class="nav-link" data-sec="opiniones" data-t="nav.opiniones" onclick="goSection('opiniones')"></button>
-      <button class="nav-link" data-view="contacto" data-t="nav.contacto" onclick="go('contacto')"></button>
+    <button class="nav-link" data-sec="top" data-t="nav.inicio" onclick="goSection('top')"></button>
+    <button class="btn btn-gold nav-reservas" data-view="contacto" data-t="nav.reservas" onclick="go('contacto')"></button>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button class="lang-btn active" data-lang="es" onclick="setLang('es')"><svg width="16" height="11" viewBox="0 0 18 12" aria-hidden="true"><rect width="18" height="12" fill="#c60b1e"/><rect y="3" width="18" height="6" fill="#ffc400"/></svg>ES</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')"><svg width="16" height="11" viewBox="0 0 18 12" aria-hidden="true"><rect width="18" height="12" fill="#b22234"/><g fill="#fff"><rect y="1.7" width="18" height="1.7"/><rect y="5.1" width="18" height="1.7"/><rect y="8.5" width="18" height="1.7"/></g><rect width="7.2" height="6" fill="#3c3b6e"/></svg>EN</button>
+      <button class="lang-btn" data-lang="de" onclick="setLang('de')"><svg width="16" height="11" viewBox="0 0 18 12" aria-hidden="true"><rect width="18" height="12" fill="#000"/><rect y="4" width="18" height="4" fill="#dd0000"/><rect y="8" width="18" height="4" fill="#ffce00"/></svg>DE</button>
     </div>
-    <div class="lang">
-      <button data-lang="es" onclick="setLang('es')">ES</button><span class="sep">/</span>
-      <button data-lang="en" onclick="setLang('en')">EN</button><span class="sep">/</span>
-      <button data-lang="de" onclick="setLang('de')">DE</button>
-    </div>
-    <button class="btn btn-gold" data-t="nav.cta" onclick="go('contacto')"></button>
   </div>
 </div>
 
@@ -427,17 +426,17 @@ var FORM_ENDPOINT = 'https://formsubmit.co/ajax/zafiroboat@gmail.com';
 
 var I18N = {
   es: {
-    nav: { inicio: 'Inicio', barco: 'El Barco', excursiones: 'Excursiones', opiniones: 'Opiniones', contacto: 'Contacto', cta: 'Reservar' },
+    nav: { inicio: 'Inicio', barco: 'El Barco', excursiones: 'Excursiones', opiniones: 'Opiniones', contacto: 'Contacto', reservas: 'Reservas', cta: 'Reservar' },
     home: {
       heroTag: 'Port de Pollença · Mallorca',
-      heroSubtitle: 'Excursiones privadas en barco por la costa norte de Mallorca. Un día en el mar, a su ritmo.',
+      heroSubtitle: 'El highlight de tus vacaciones.',
       heroCta1: 'Reservar', heroCta2: 'Ver excursiones', scroll: 'Descubra',
       aboutTag: 'El barco', aboutTitle: 'Un clásico con alma mediterránea',
       boatBadge: '<b>12,7 m</b> · Princess',
       aboutBody: 'Zafiro combina la elegancia de un clásico con la comodidad de un crucero moderno. Navegamos cerca de la costa con paradas en calas escondidas, guiados por un patrón que conoce cada rincón del norte de Mallorca. Todo incluido: paddle surf, kayaks y más juguetes a bordo.',
       aboutStats: [ { value: '12,7 m', label: 'Eslora' }, { value: '11 pax', label: 'Capacidad' }, { value: '3', label: 'Paradas por ruta' }, { value: 'Todo incluido', label: 'En el precio' } ],
       onboardTag: 'A bordo', onboardTitle: 'Todo lo que necesita para un gran día',
-      onboardItems: [ { letter: 'S', title: 'Snorkel' }, { letter: 'P', title: 'Paddle Surf' }, { letter: 'K', title: 'Kayaks' }, { letter: 'B', title: 'Bebidas y snacks' }, { letter: 'M', title: 'Música a bordo' }, { letter: 'C', title: 'Patrón profesional' } ],
+      onboardItems: [ { title: '+15 Snorkels' }, { title: '3 Paddle Surf' }, { title: '1 Kayak' }, { title: 'Bebidas y snacks' }, { title: 'Música a bordo' }, { title: 'Patrón profesional' } ],
       bandTag: 'La experiencia', bandTitle: 'El mar cambia toda perspectiva. Descúbralo desde el mejor asiento.',
       reviewsTag: 'Clientes', reviewsTitle: 'Su experiencia',
       reviews: [ { quote: 'Un día perfecto. El patrón conocía cada cala y todo estuvo cuidado al detalle.', name: 'Laura M.' }, { quote: 'Sensación de barco privado de verdad. Repetiremos sin duda.', name: 'Thomas B.' }, { quote: 'Los niños encantados con los kayaks y el paddle surf. Muy recomendable.', name: 'Anke S.' } ],
@@ -467,17 +466,17 @@ var I18N = {
     },
   },
   en: {
-    nav: { inicio: 'Home', barco: 'The Boat', excursiones: 'Excursions', opiniones: 'Reviews', contacto: 'Contact', cta: 'Book Now' },
+    nav: { inicio: 'Home', barco: 'The Boat', excursiones: 'Excursions', opiniones: 'Reviews', contacto: 'Contact', reservas: 'Book', cta: 'Book Now' },
     home: {
       heroTag: 'Port de Pollença · Mallorca',
-      heroSubtitle: 'Private boat excursions along the north coast of Mallorca. A day at sea, at your own pace.',
+      heroSubtitle: 'The highlight of your holiday.',
       heroCta1: 'Book now', heroCta2: 'View excursions', scroll: 'Discover',
       aboutTag: 'The boat', aboutTitle: 'A classic with Mediterranean soul',
       boatBadge: '<b>12.7 m</b> · Princess',
       aboutBody: 'Zafiro pairs classic elegance with the comfort of a modern cruiser. We sail close to shore with stops at hidden coves, guided by a skipper who knows every corner of northern Mallorca. Everything included: paddle boards, kayaks and more toys on board.',
       aboutStats: [ { value: '12.7 m', label: 'Length' }, { value: '11 pax', label: 'Capacity' }, { value: '3', label: 'Stops per route' }, { value: 'All included', label: 'In the price' } ],
       onboardTag: 'On board', onboardTitle: 'Everything for a great day',
-      onboardItems: [ { letter: 'S', title: 'Snorkelling' }, { letter: 'P', title: 'Paddle boards' }, { letter: 'K', title: 'Kayaks' }, { letter: 'B', title: 'Drinks & snacks' }, { letter: 'M', title: 'Music on board' }, { letter: 'C', title: 'Professional skipper' } ],
+      onboardItems: [ { title: '15+ Snorkels' }, { title: '3 Paddle boards' }, { title: '1 Kayak' }, { title: 'Drinks & snacks' }, { title: 'Music on board' }, { title: 'Professional skipper' } ],
       bandTag: 'The experience', bandTitle: 'The water changes everything. See Mallorca from the best seat in the house.',
       reviewsTag: 'Guests', reviewsTitle: 'Their experience',
       reviews: [ { quote: 'A perfect day. The skipper knew every cove and every detail was taken care of.', name: 'Laura M.' }, { quote: 'A true private-yacht feeling. We will absolutely be back.', name: 'Thomas B.' }, { quote: 'The kids loved the kayaks and paddle boards. Highly recommended.', name: 'Anke S.' } ],
@@ -507,17 +506,17 @@ var I18N = {
     },
   },
   de: {
-    nav: { inicio: 'Start', barco: 'Das Boot', excursiones: 'Ausflüge', opiniones: 'Bewertungen', contacto: 'Kontakt', cta: 'Buchen' },
+    nav: { inicio: 'Start', barco: 'Das Boot', excursiones: 'Ausflüge', opiniones: 'Bewertungen', contacto: 'Kontakt', reservas: 'Buchen', cta: 'Buchen' },
     home: {
       heroTag: 'Port de Pollença · Mallorca',
-      heroSubtitle: 'Private Bootsausflüge entlang der Nordküste Mallorcas. Ein Tag auf dem Meer, in Ihrem Tempo.',
+      heroSubtitle: 'Das Highlight Ihres Urlaubs.',
       heroCta1: 'Jetzt buchen', heroCta2: 'Ausflüge ansehen', scroll: 'Entdecken',
       aboutTag: 'Das Boot', aboutTitle: 'Ein Klassiker mit mediterraner Seele',
       boatBadge: '<b>12,7 m</b> · Princess',
       aboutBody: 'Zafiro verbindet klassische Eleganz mit dem Komfort eines modernen Cruisers. Wir fahren küstennah mit Stopps an versteckten Buchten, geführt von einem Skipper, der jeden Winkel Nordmallorcas kennt. Alles inklusive: Paddleboards, Kajaks und mehr an Bord.',
       aboutStats: [ { value: '12,7 m', label: 'Länge' }, { value: '11 Pax', label: 'Kapazität' }, { value: '3', label: 'Stopps pro Route' }, { value: 'Alles inklusive', label: 'Im Preis' } ],
       onboardTag: 'An Bord', onboardTitle: 'Alles für einen tollen Tag',
-      onboardItems: [ { letter: 'S', title: 'Schnorcheln' }, { letter: 'P', title: 'Paddleboards' }, { letter: 'K', title: 'Kajaks' }, { letter: 'B', title: 'Getränke & Snacks' }, { letter: 'M', title: 'Musik an Bord' }, { letter: 'C', title: 'Professioneller Skipper' } ],
+      onboardItems: [ { title: '15+ Schnorchelsets' }, { title: '3 Paddleboards' }, { title: '1 Kajak' }, { title: 'Getränke & Snacks' }, { title: 'Musik an Bord' }, { title: 'Professioneller Skipper' } ],
       bandTag: 'Das Erlebnis', bandTitle: 'Das Meer verändert alles. Erleben Sie Mallorca vom besten Platz aus.',
       reviewsTag: 'Gäste', reviewsTitle: 'Ihre Erfahrung',
       reviews: [ { quote: 'Ein perfekter Tag. Der Skipper kannte jede Bucht, alles war bis ins Detail durchdacht.', name: 'Laura M.' }, { quote: 'Echtes Privatyacht-Gefühl. Wir kommen definitiv wieder.', name: 'Thomas B.' }, { quote: 'Die Kinder liebten die Kajaks und Paddleboards. Sehr empfehlenswert.', name: 'Anke S.' } ],
@@ -546,6 +545,16 @@ var I18N = {
       prefill: 'Hallo, ich interessiere mich für den Ausflug "{x}". Können Sie Verfügbarkeit und Preis bestätigen? Ungefähre Termine: ',
     },
   },
+};
+
+var ICON_KEYS = ['snorkel', 'paddle', 'kayak', 'drinks', 'music', 'skipper'];
+var ICONS = {
+  snorkel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="12" height="7" rx="3"/><path d="M15.5 11h2.5a2 2 0 0 1 2 2v6"/></svg>',
+  paddle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="8.5" cy="12" rx="4" ry="8.5"/><path d="M17 5l-2.2 2.2M17 5l2.2 2.2M17 5v9"/></svg>',
+  kayak: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13c5 2.5 13 2.5 18 0-5-2.5-13-2.5-18 0z"/><path d="M8 7.5l8 9"/></svg>',
+  drinks: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14l-7 7.5z"/><path d="M12 12.5V19"/><path d="M8 19h8"/></svg>',
+  music: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="17.5" r="2.5"/><circle cx="17" cy="15.5" r="2.5"/><path d="M9.5 17.5V6l10-2v11.5M9.5 8.5l10-2"/></svg>',
+  skipper: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="1.8"/><path d="M12 6.3V20"/><path d="M6.5 11h11"/><path d="M5 14.5a7 7 0 0 0 14 0"/></svg>'
 };
 
 var lang = 'es', view = 'home';
@@ -586,7 +595,7 @@ function goReserva(excName) {
 function setLang(l) {
   lang = l;
   document.documentElement.lang = l;
-  document.querySelectorAll('.lang button').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+  document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
   applyText();
   renderHome();
   renderExcursions();
@@ -606,7 +615,13 @@ function renderHome() {
   var stats = document.getElementById('home-stats'); stats.innerHTML = '';
   h.aboutStats.forEach(function (s) { var d = el('div'); d.appendChild(el('div', 'stat-value', s.value)); d.appendChild(el('div', 'stat-label', s.label)); stats.appendChild(d); });
   var ob = document.getElementById('home-onboard'); ob.innerHTML = '';
-  h.onboardItems.forEach(function (it) { var d = el('div', 'ob-item'); d.appendChild(el('div', 'ob-letter', it.letter)); d.appendChild(el('div', 't', it.title)); ob.appendChild(d); });
+  h.onboardItems.forEach(function (it, i) {
+    var d = el('div', 'ob-item');
+    var ic = el('div', 'ob-letter'); ic.innerHTML = ICONS[ICON_KEYS[i]] || '';
+    d.appendChild(ic);
+    d.appendChild(el('div', 't', it.title));
+    ob.appendChild(d);
+  });
   var rev = document.getElementById('home-reviews'); rev.innerHTML = '';
   h.reviews.forEach(function (r) { var d = el('div', 'review'); d.innerHTML = '<div class="stars">★★★★★</div><div class="q">' + esc(r.quote) + '</div><div class="who">' + esc(r.name) + '</div>'; rev.appendChild(d); });
 }
@@ -685,8 +700,6 @@ var spy = new IntersectionObserver(function (entries) {
   });
 }, { rootMargin: '-45% 0px -50% 0px' });
 ['sec-top', 'sec-barco', 'sec-excursiones', 'sec-opiniones'].forEach(function (id) { var e = document.getElementById(id); if (e) spy.observe(e); });
-
-document.getElementById('navToggle').addEventListener('click', function () { document.getElementById('nav').classList.toggle('open'); });
 
 /* ---------- init ---------- */
 (function init() {
