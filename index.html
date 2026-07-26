@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zafiro Boat — Excursiones privadas en barco · Port de Pollença, Mallorca</title>
 <meta name="description" content="Excursiones privadas en barco por la costa norte de Mallorca. Medio día, día completo y sunset desde el Puerto de Pollença. Todo incluido: paddle surf, kayaks y patrón profesional.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d2438'/%3E%3Cpath d='M16 6l3 6h-6z' fill='%23c9a668'/%3E%3Crect x='15' y='11' width='2' height='9' fill='%23c9a668'/%3E%3Cpath d='M8 20h16l-3 5H11z' fill='%23c9a668'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/logo-z.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -63,8 +64,8 @@
     padding: 20px 40px; transition: background .35s ease, padding .35s ease, box-shadow .35s ease;
   }
   .nav.solid { background: rgba(255,255,255,0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--line); padding: 14px 40px; }
-  .brand { cursor: pointer; font-family: var(--display); font-size: 24px; font-weight: 600; letter-spacing: 5px; color: #fff; transition: color .35s ease; }
-  .nav.solid .brand { color: var(--navy); }
+  .brand { cursor: pointer; display: flex; align-items: center; }
+  .brand img { height: 40px; width: auto; display: block; }
   .nav-right { display: flex; align-items: center; gap: 30px; }
   .nav-links { display: flex; gap: 28px; }
   .nav-link {
@@ -201,7 +202,7 @@
 
   /* ---- FOOTER ---- */
   .footer { background: var(--navy-deep); color: #fff; padding: 56px 40px 34px; text-align: center; }
-  .footer .fbrand { font-family: var(--display); font-size: 22px; letter-spacing: 5px; }
+  .footer .flogo { height: 104px; width: auto; margin: 0 auto 4px; display: block; }
   .footer .fline { color: #93a0ab; font-size: 13.5px; margin-top: 14px; }
   .footer .fline a { color: #cdd6dd; }
   .footer .fcopy { color: #5f6d78; font-size: 12px; margin-top: 20px; }
@@ -212,7 +213,7 @@
     .nav { padding: 14px 16px; }
     .nav.solid { padding: 11px 16px; }
     .nav-right { gap: 12px; }
-    .brand { font-size: 20px; letter-spacing: 3px; }
+    .brand img { height: 34px; }
     .nav-link { font-size: 12.5px; }
     .lang { gap: 3px; padding: 3px; }
     .lang-btn { gap: 5px; padding: 6px 9px; }
@@ -229,7 +230,7 @@
   @media (max-width: 520px) {
     .onboard-grid { grid-template-columns: 1fr; }
     .hero-ctas .btn { width: 100%; }
-    .brand { font-size: 17px; letter-spacing: 2px; }
+    .brand img { height: 30px; }
     .nav-link { font-size: 11.5px; }
     .lang-btn { font-size: 0; letter-spacing: 0; gap: 0; padding: 6px 7px; }
     .nav .btn.nav-reservas { padding: 9px 15px; font-size: 10.5px; }
@@ -241,7 +242,7 @@
 
 <!-- ================= NAV ================= -->
 <div class="nav" id="nav">
-  <div class="brand" onclick="goSection('top')">ZAFIRO</div>
+  <div class="brand" onclick="goSection('top')"><img src="assets/logo-z.png" alt="Zafiro"></div>
   <div class="nav-right">
     <button class="nav-link" data-sec="top" data-t="nav.inicio" onclick="goSection('top')"></button>
     <button class="btn btn-gold nav-reservas" data-view="contacto" data-t="nav.reservas" onclick="go('contacto')"></button>
@@ -413,7 +414,7 @@
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
-  <div class="fbrand">ZAFIRO</div>
+  <img class="flogo" src="assets/logo-cream.png" alt="Zafiro Boat">
   <div class="fline">Port de Pollença, Mallorca · <a href="tel:+34633952154">+34 633 95 21 54</a> · <a href="mailto:zafiroboat@gmail.com">zafiroboat@gmail.com</a></div>
   <div class="fcopy">© 2026 Zafiro Boat</div>
 </footer>
