@@ -114,6 +114,14 @@
   .split-media .badge { position: absolute; bottom: 22px; left: 22px; background: var(--navy); color: #fff; font-family: var(--display); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 12px 18px; }
   .split-media .badge b { color: var(--gold); }
 
+  /* EL BARCO — full-bleed */
+  .boat-full { position: relative; width: 100%; height: clamp(420px, 72vh, 780px); overflow: hidden; }
+  .boat-full img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  .boat-badge { position: absolute; left: clamp(20px, 4vw, 48px); bottom: clamp(20px, 4vw, 40px); background: var(--navy); color: #fff; font-family: var(--display); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 12px 18px; }
+  .boat-badge b { color: var(--gold); }
+  .boat-info { max-width: 860px; margin: 0 auto; padding: clamp(48px, 6vw, 82px) 24px clamp(56px, 7vw, 110px); text-align: center; }
+  .boat-info .stats { grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 760px; margin: 40px auto 0; }
+
   .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 34px; margin-top: 42px; }
   .stat-value { font-family: var(--display); font-size: 30px; font-weight: 500; color: var(--navy); }
   .stat-label { font-size: 13px; color: var(--muted); letter-spacing: 0.4px; margin-top: 3px; }
@@ -235,6 +243,8 @@
     .exc-extras, .loc, .contact-grid { grid-template-columns: 1fr; }
     .loc-map { height: 320px; }
     .stats { gap: 22px; }
+    .boat-info .stats { grid-template-columns: 1fr 1fr; }
+    .boat-full { height: 52vh; min-height: 340px; }
   }
   @media (max-width: 520px) {
     .onboard-grid { grid-template-columns: 1fr; }
@@ -286,18 +296,16 @@
   </section>
 
   <!-- EL BARCO -->
-  <section class="section" id="sec-barco">
-    <div class="wrap split">
-      <div class="split-media">
-        <img src="assets/img/barco.jpg" alt="Cubierta de teca del Zafiro sobre agua turquesa" loading="lazy">
-        <div class="badge" data-t="home.boatBadge"></div>
-      </div>
-      <div>
-        <div class="eyebrow" data-t="home.aboutTag"></div>
-        <h2 class="h-sec" data-t="home.aboutTitle"></h2>
-        <p class="lead" data-t="home.aboutBody" style="margin-top:22px"></p>
-        <div class="stats" id="home-stats"></div>
-      </div>
+  <section id="sec-barco">
+    <div class="boat-full">
+      <img src="assets/img/barco.jpg" alt="El Zafiro fondeado en una cala de Mallorca" loading="lazy">
+      <div class="boat-badge" data-t="home.boatBadge"></div>
+    </div>
+    <div class="boat-info">
+      <div class="eyebrow" data-t="home.aboutTag"></div>
+      <h2 class="h-sec" data-t="home.aboutTitle"></h2>
+      <p class="lead" data-t="home.aboutBody" style="margin-top:20px"></p>
+      <div class="stats" id="home-stats"></div>
     </div>
   </section>
 
