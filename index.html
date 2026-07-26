@@ -114,13 +114,16 @@
   .split-media .badge { position: absolute; bottom: 22px; left: 22px; background: var(--navy); color: #fff; font-family: var(--display); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 12px 18px; }
   .split-media .badge b { color: var(--gold); }
 
-  /* EL BARCO — full-bleed */
-  .boat-full { position: relative; width: 100%; height: clamp(420px, 72vh, 780px); overflow: hidden; }
-  .boat-full img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-  .boat-badge { position: absolute; left: clamp(20px, 4vw, 48px); bottom: clamp(20px, 4vw, 40px); background: var(--navy); color: #fff; font-family: var(--display); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 12px 18px; }
-  .boat-badge b { color: var(--gold); }
-  .boat-info { max-width: 860px; margin: 0 auto; padding: clamp(48px, 6vw, 82px) 24px clamp(56px, 7vw, 110px); text-align: center; }
-  .boat-info .stats { grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 760px; margin: 40px auto 0; }
+  /* GALERÍA del barco */
+  .gallery { position: relative; width: 100%; aspect-ratio: 3 / 2; border-radius: 3px; overflow: hidden; background: var(--navy); }
+  .gal-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease; }
+  .gal-img.on { opacity: 1; }
+  .gal-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(13,36,56,0.45); color: #fff; font-family: var(--display); font-size: 22px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); transition: background .2s ease; }
+  .gal-btn:hover { background: rgba(13,36,56,0.82); }
+  .gal-prev { left: 14px; } .gal-next { right: 14px; }
+  .gal-dots { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; gap: 8px; }
+  .gal-dot { width: 8px; height: 8px; padding: 0; border: none; border-radius: 50%; background: rgba(255,255,255,0.55); cursor: pointer; transition: background .2s ease, transform .2s ease; }
+  .gal-dot.on { background: var(--gold); transform: scale(1.25); }
 
   .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 34px; margin-top: 42px; }
   .stat-value { font-family: var(--display); font-size: 30px; font-weight: 500; color: var(--navy); }
@@ -243,8 +246,6 @@
     .exc-extras, .loc, .contact-grid { grid-template-columns: 1fr; }
     .loc-map { height: 320px; }
     .stats { gap: 22px; }
-    .boat-info .stats { grid-template-columns: 1fr 1fr; }
-    .boat-full { height: 52vh; min-height: 340px; }
   }
   @media (max-width: 520px) {
     .onboard-grid { grid-template-columns: 1fr; }
@@ -296,16 +297,22 @@
   </section>
 
   <!-- EL BARCO -->
-  <section id="sec-barco">
-    <div class="boat-full">
-      <img src="assets/img/barco.jpg" alt="El Zafiro fondeado en una cala de Mallorca" loading="lazy">
-      <div class="boat-badge" data-t="home.boatBadge"></div>
-    </div>
-    <div class="boat-info">
-      <div class="eyebrow" data-t="home.aboutTag"></div>
-      <h2 class="h-sec" data-t="home.aboutTitle"></h2>
-      <p class="lead" data-t="home.aboutBody" style="margin-top:20px"></p>
-      <div class="stats" id="home-stats"></div>
+  <section class="section" id="sec-barco">
+    <div class="wrap split">
+      <div class="split-media">
+        <div class="gallery" id="boat-gallery">
+          <button class="gal-btn gal-prev" id="gal-prev" type="button" aria-label="Anterior">&#8249;</button>
+          <button class="gal-btn gal-next" id="gal-next" type="button" aria-label="Siguiente">&#8250;</button>
+          <div class="gal-dots" id="gal-dots"></div>
+        </div>
+        <div class="badge" data-t="home.boatBadge"></div>
+      </div>
+      <div>
+        <div class="eyebrow" data-t="home.aboutTag"></div>
+        <h2 class="h-sec" data-t="home.aboutTitle"></h2>
+        <p class="lead" data-t="home.aboutBody" style="margin-top:22px"></p>
+        <div class="stats" id="home-stats"></div>
+      </div>
     </div>
   </section>
 
@@ -781,6 +788,55 @@ var spy = new IntersectionObserver(function (entries) {
   });
 }, { rootMargin: '-45% 0px -50% 0px' });
 ['sec-top', 'sec-barco', 'sec-excursiones', 'sec-opiniones'].forEach(function (id) { var e = document.getElementById(id); if (e) spy.observe(e); });
+
+/* ---------- GALERÍA del barco ----------
+   Para añadir fotos: sube el archivo a assets/img/ y añade su ruta a esta lista. */
+var BOAT_GALLERY = [
+  'assets/img/barco.jpg',
+  'assets/img/navegacion.jpg'
+];
+(function () {
+  var g = document.getElementById('boat-gallery');
+  if (!g) return;
+  var dotsWrap = document.getElementById('gal-dots');
+  var prevBtn = document.getElementById('gal-prev');
+  var nextBtn = document.getElementById('gal-next');
+  var imgs = [], dots = [], idx = 0, timer = null;
+  BOAT_GALLERY.forEach(function (src, i) {
+    var im = document.createElement('img');
+    im.className = 'gal-img' + (i === 0 ? ' on' : '');
+    im.src = src; im.alt = 'Zafiro'; im.loading = i === 0 ? 'eager' : 'lazy';
+    g.appendChild(im); imgs.push(im);
+    var d = document.createElement('button');
+    d.className = 'gal-dot' + (i === 0 ? ' on' : ''); d.type = 'button';
+    d.setAttribute('aria-label', 'Foto ' + (i + 1));
+    d.addEventListener('click', function () { show(i); restart(); });
+    dotsWrap.appendChild(d); dots.push(d);
+  });
+  function show(i) {
+    idx = (i + imgs.length) % imgs.length;
+    imgs.forEach(function (m, k) { m.classList.toggle('on', k === idx); });
+    dots.forEach(function (m, k) { m.classList.toggle('on', k === idx); });
+  }
+  function next() { show(idx + 1); }
+  function prev() { show(idx - 1); }
+  function start() { if (imgs.length > 1) timer = setInterval(next, 5000); }
+  function restart() { clearInterval(timer); start(); }
+  nextBtn.addEventListener('click', function () { next(); restart(); });
+  prevBtn.addEventListener('click', function () { prev(); restart(); });
+  g.addEventListener('mouseenter', function () { clearInterval(timer); });
+  g.addEventListener('mouseleave', start);
+  var x0 = null;
+  g.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  g.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) { (dx < 0 ? next : prev)(); restart(); }
+    x0 = null;
+  });
+  if (imgs.length < 2) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; dotsWrap.style.display = 'none'; }
+  start();
+})();
 
 /* ---------- hero video autoplay (móvil) ---------- */
 (function () {
