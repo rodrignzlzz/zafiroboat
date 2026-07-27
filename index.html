@@ -11,6 +11,41 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://zafiroboat.com/#business",
+  "name": "Zafiro Boat",
+  "description": "Excursiones privadas en barco por la costa norte de Mallorca desde el Port de Pollença. Medio día, día completo y sunset, todo incluido con patrón profesional.",
+  "url": "https://zafiroboat.com",
+  "telephone": "+34633952154",
+  "email": "zafiroboat@gmail.com",
+  "image": ["https://zafiroboat.com/assets/img/barco.jpg", "https://zafiroboat.com/assets/logo-z.png"],
+  "logo": "https://zafiroboat.com/assets/logo-z.png",
+  "priceRange": "€€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Reial Club Nàutic Port de Pollença",
+    "addressLocality": "Port de Pollença",
+    "postalCode": "07470",
+    "addressRegion": "Illes Balears",
+    "addressCountry": "ES"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 39.9035105, "longitude": 3.0870709 },
+  "areaServed": { "@type": "Place", "name": "Mallorca" },
+  "sameAs": ["https://maps.app.goo.gl/H6rxLyvrcCLXucEi8"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Excursiones",
+    "itemListElement": [
+      { "@type": "Offer", "name": "Medio Día (4 h)", "price": "900", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Día Completo (7 h)", "price": "1700", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Sunset (3 h)", "price": "750", "priceCurrency": "EUR" }
+    ]
+  }
+}
+</script>
 </head>
 <body>
 
@@ -124,6 +159,8 @@
       <div class="review-cta">
         <div class="review-cta-title" data-t="home.reviewFormTitle"></div>
         <p class="lead" data-t="home.reviewFormSub"></p>
+        <a class="btn btn-gold google-review" href="https://maps.app.goo.gl/H6rxLyvrcCLXucEi8" target="_blank" rel="noopener" data-t="home.reviewGoogle"></a>
+        <div class="review-or" data-t="home.reviewOr"></div>
         <form id="review-form" class="review-form" novalidate>
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <div class="field"><label data-t="home.rfName"></label><input type="text" name="nombre"></div>
@@ -246,7 +283,7 @@ var I18N = {
       locBody: 'Zarpamos desde el Reial Club Nàutic de Port de Pollença, punto de partida perfecto para explorar Formentor y las calas del norte de la isla.',
       locBtn: 'Cómo llegar',
       ctaTag: 'Reserve', ctaTitle: 'Reserve su día en el mar', ctaBody: 'Plazas limitadas por salida. Escríbanos y le confirmamos disponibilidad en pocas horas.', ctaButton: 'Reservar',
-      reviewFormTitle: '¿Has navegado con nosotros?', reviewFormSub: 'Nos encantaría leer tu experiencia. Deja tu reseña y la publicamos.',
+      reviewFormTitle: '¿Has navegado con nosotros?', reviewFormSub: 'Nos encantaría leer tu experiencia. Deja tu reseña y la publicamos.', reviewGoogle: 'Deja tu reseña en Google', reviewOr: 'o escríbenos tu opinión aquí',
       rfName: 'Nombre', rfRating: 'Valoración', rfComment: 'Tu reseña', rfSend: 'Enviar reseña', rfSent: '¡Gracias por tu reseña! La revisaremos y publicaremos.', rfValidation: 'Indica tu nombre y una valoración.',
     },
     exc: {
@@ -288,7 +325,7 @@ var I18N = {
       locBody: 'We sail from the Reial Club Nàutic de Port de Pollença, the perfect starting point to explore Formentor and the coves of the north.',
       locBtn: 'Get directions',
       ctaTag: 'Book', ctaTitle: 'Book your day at sea', ctaBody: 'Limited spots per sailing. Write to us and we confirm availability within a few hours.', ctaButton: 'Book now',
-      reviewFormTitle: 'Sailed with us?', reviewFormSub: "We'd love to read about your experience. Leave your review below.",
+      reviewFormTitle: 'Sailed with us?', reviewFormSub: "We'd love to read about your experience. Leave your review below.", reviewGoogle: 'Leave your review on Google', reviewOr: 'or write your feedback here',
       rfName: 'Name', rfRating: 'Rating', rfComment: 'Your review', rfSend: 'Send review', rfSent: 'Thanks for your review! We will check and publish it.', rfValidation: 'Please add your name and a rating.',
     },
     exc: {
@@ -330,7 +367,7 @@ var I18N = {
       locBody: 'Wir starten vom Reial Club Nàutic de Port de Pollença, dem perfekten Ausgangspunkt für Formentor und die Buchten des Nordens.',
       locBtn: 'Anfahrt',
       ctaTag: 'Buchen', ctaTitle: 'Buchen Sie Ihren Tag auf See', ctaBody: 'Begrenzte Plätze pro Fahrt. Schreiben Sie uns und wir bestätigen die Verfügbarkeit innerhalb weniger Stunden.', ctaButton: 'Jetzt buchen',
-      reviewFormTitle: 'Schon mitgefahren?', reviewFormSub: 'Wir würden uns über deine Erfahrung freuen. Hinterlasse deine Bewertung.',
+      reviewFormTitle: 'Schon mitgefahren?', reviewFormSub: 'Wir würden uns über deine Erfahrung freuen. Hinterlasse deine Bewertung.', reviewGoogle: 'Bewerte uns auf Google', reviewOr: 'oder schreib uns dein Feedback hier',
       rfName: 'Name', rfRating: 'Bewertung', rfComment: 'Deine Bewertung', rfSend: 'Bewertung senden', rfSent: 'Danke für deine Bewertung! Wir prüfen und veröffentlichen sie.', rfValidation: 'Bitte Namen und Bewertung angeben.',
     },
     exc: {
