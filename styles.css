@@ -323,3 +323,12 @@
   .equip-list { grid-template-columns: 1fr; }
   .photo-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* --- Tour route (itinerary) --- */
+.route { margin-top: 22px; max-width: 720px; }
+.route-stop { position: relative; padding: 0 0 26px 42px; border-left: 1px solid var(--line); }
+.route-stop:last-child { border-left-color: transparent; padding-bottom: 0; }
+.route-num { position: absolute; left: -15px; top: -2px; width: 30px; height: 30px; border-radius: 50%; background: var(--navy); color: var(--gold); font-family: var(--display); font-size: 12.5px; display: flex; align-items: center; justify-content: center; }
+.route-stop h4 { font-family: var(--display); font-size: 17px; font-weight: 500; margin: 4px 0 6px; color: var(--navy); }
+.route-stop p { font-size: 14.5px; line-height: 1.7; color: var(--ink-soft); font-weight: 300; margin: 0; }
+.route-stop em { color: var(--ink); font-style: italic; }
