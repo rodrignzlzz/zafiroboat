@@ -62,3 +62,23 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+/* Autoplay muted videos (class "av") when scrolled into view */
+(function () {
+  function initAV() {
+    var vids = document.querySelectorAll('video.av');
+    if (!vids.length) return;
+    vids.forEach(function (v) { v.muted = true; v.defaultMuted = true; v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); });
+    function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+    if (!('IntersectionObserver' in window)) { vids.forEach(play); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) play(e.target);
+        else { try { e.target.pause(); } catch (x) {} }
+      });
+    }, { threshold: 0.2 });
+    vids.forEach(function (v) { io.observe(v); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAV);
+  else initAV();
+})();
