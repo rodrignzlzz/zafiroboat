@@ -300,3 +300,26 @@
 .google-review { margin-top: 4px; }
 .google-review::before { content: "\2605  "; }
 .review-or { font-size: 13px; color: var(--muted); margin: 12px 0 20px; }
+
+.gal-img.contain { object-fit: contain; }
+
+/* --- El Barco (detail page) --- */
+.boat-intro { max-width: 780px; margin: 0 auto; text-align: center; }
+.boat-zone { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 5vw, 64px); align-items: center; margin-top: clamp(44px, 6vw, 80px); }
+.boat-zone.rev .bz-media { order: 2; }
+.bz-media img { width: 100%; border-radius: 4px; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+.bz-text .eyebrow { color: var(--gold); }
+.bz-text h2 { font-family: var(--display); font-size: clamp(23px, 3vw, 31px); font-weight: 400; margin: 12px 0 14px; line-height: 1.15; }
+.bz-text p { font-size: 15.5px; line-height: 1.8; color: var(--ink-soft); font-weight: 300; margin: 0; }
+.equip { background: var(--bg-alt); }
+.equip-list { list-style: none; padding: 0; margin: 22px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 30px; max-width: 760px; }
+.equip-list li { font-size: 15.5px; color: var(--ink-soft); display: flex; gap: 12px; align-items: flex-start; }
+.equip-list li::before { content: "\2014"; color: var(--gold); }
+.photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 6px; }
+.photo-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 3px; display: block; }
+@media (max-width: 800px) {
+  .boat-zone, .boat-zone.rev .bz-media { grid-template-columns: 1fr; }
+  .boat-zone.rev .bz-media { order: 0; }
+  .equip-list { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+}
