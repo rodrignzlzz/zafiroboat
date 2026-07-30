@@ -47,6 +47,22 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Qué tengo que llevar?", "acceptedAnswer": { "@type": "Answer", "text": "Bañador, toalla, protector solar y ganas de disfrutar. El resto —snorkel, paddle surf, kayak, bebidas y snacks— va incluido a bordo." } },
+    { "@type": "Question", "name": "¿Hay una edad mínima o es apto para niños?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, es una excursión perfecta para familias. Disponemos de chalecos salvavidas homologados para adultos y niños de todas las edades." } },
+    { "@type": "Question", "name": "¿Qué pasa si hace mal tiempo?", "acceptedAnswer": { "@type": "Answer", "text": "La seguridad es lo primero: si las condiciones del mar no son adecuadas, reprogramamos la salida sin coste o le reembolsamos el depósito." } },
+    { "@type": "Question", "name": "¿Cómo funciona la reserva y el pago?", "acceptedAnswer": { "@type": "Answer", "text": "Escríbanos con la excursión, fecha y número de personas. Le confirmamos disponibilidad en pocas horas y bloqueamos la plaza con un depósito; el resto se abona a bordo." } },
+    { "@type": "Question", "name": "¿Cuántas personas caben en el barco?", "acceptedAnswer": { "@type": "Answer", "text": "El Zafiro admite hasta 11 personas, con precio base hasta 7 pax y un suplemento por persona adicional." } },
+    { "@type": "Question", "name": "¿Incluye comida y bebida?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Todas las excursiones incluyen bebidas y snacks a bordo; el Medio Día y el Día Completo incluyen además comida." } },
+    { "@type": "Question", "name": "¿Podemos elegir la hora de salida?", "acceptedAnswer": { "@type": "Answer", "text": "Adaptamos los horarios siempre que la disponibilidad y las condiciones del mar lo permitan. Coméntenoslo al reservar." } },
+    { "@type": "Question", "name": "¿Se marea la gente a bordo?", "acceptedAnswer": { "@type": "Answer", "text": "Navegamos cerca de la costa y a un ritmo tranquilo, lo que reduce mucho el riesgo de mareo. Aun así, si eres propenso, te recomendamos tomar tu medicación habitual antes de zarpar." } }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -90,10 +106,10 @@
   <section class="section" id="sec-barco">
     <div class="wrap split">
       <div class="split-media">
-        <div class="gallery" id="boat-gallery">
-          <button class="gal-btn gal-prev" id="gal-prev" type="button" aria-label="Anterior">&#8249;</button>
-          <button class="gal-btn gal-next" id="gal-next" type="button" aria-label="Siguiente">&#8250;</button>
-          <div class="gal-dots" id="gal-dots"></div>
+        <div class="gallery" data-items='[{"t":"img","src":"assets/img/barco.jpg"},{"t":"img","src":"assets/img/barco-people.jpg"},{"t":"video","src":"assets/vid/elbarco.mp4","poster":"assets/vid/elbarco.jpg"},{"t":"img","src":"assets/img/barco-platform.jpg"},{"t":"img","src":"assets/img/gp3.jpg"},{"t":"img","src":"assets/img/barco-villa.jpg"}]'>
+          <button class="gal-btn gal-prev" type="button" aria-label="Anterior">&#8249;</button>
+          <button class="gal-btn gal-next" type="button" aria-label="Siguiente">&#8250;</button>
+          <div class="gal-dots"></div>
         </div>
         <div class="badge" data-t="home.boatBadge"></div>
       </div>
@@ -200,6 +216,46 @@
     </div>
   </section>
 
+  <!-- TIEMPO EN DIRECTO -->
+  <section class="section">
+    <div class="wrap">
+      <div class="weather-card" id="weather-card">
+        <div class="weather-head">
+          <div>
+            <div class="eyebrow" style="color:var(--gold)" data-t="home.weatherTag"></div>
+            <h2 class="h-sec" data-t="home.weatherTitle"></h2>
+          </div>
+          <div class="live-badge"><span class="dot"></span><span data-t="home.weatherLive"></span></div>
+        </div>
+        <div class="weather-main">
+          <div class="weather-icon" id="w-icon"></div>
+          <div>
+            <div class="weather-temp"><span id="w-temp">--</span><span class="deg">°C</span></div>
+            <div class="weather-sub" id="w-sky" data-t="home.weatherLoading"></div>
+          </div>
+        </div>
+        <div class="weather-grid">
+          <div class="w-tile"><div class="w-k" data-t="home.weatherWind"></div><div class="w-v"><svg id="w-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><path d="M12 2v20M12 2l-6 6M12 2l6 6"/></svg><span id="w-wind">--</span></div></div>
+          <div class="w-tile"><div class="w-k" data-t="home.weatherFeels"></div><div class="w-v"><span id="w-feels">--</span></div></div>
+          <div class="w-tile"><div class="w-k" data-t="home.weatherSea"></div><div class="w-v"><span id="w-sea">--</span></div></div>
+          <div class="w-tile"><div class="w-k" data-t="home.weatherWave"></div><div class="w-v"><span id="w-wave">--</span></div></div>
+        </div>
+        <div class="weather-updated" id="w-updated"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="sec-faq">
+    <div class="wrap">
+      <div class="center-head center">
+        <div class="eyebrow" data-t="home.faqTag"></div>
+        <h2 class="h-sec" data-t="home.faqTitle"></h2>
+      </div>
+      <div class="faq-list" id="faq-list"></div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="section cta">
     <div class="wrap">
@@ -285,6 +341,19 @@ var I18N = {
       locBody: 'Zarpamos desde el Reial Club Nàutic de Port de Pollença, punto de partida perfecto para explorar Formentor y las calas del norte de la isla.',
       locBtn: 'Cómo llegar',
       ctaTag: 'Reserve', ctaTitle: 'Reserve su día en el mar', ctaBody: 'Plazas limitadas por salida. Escríbanos y le confirmamos disponibilidad en pocas horas.', ctaButton: 'Reservar',
+      weatherTag: 'Condiciones en directo', weatherTitle: 'Port de Pollença ahora mismo', weatherLive: 'EN VIVO', weatherLoading: 'Cargando…',
+      weatherWind: 'Viento', weatherFeels: 'Sensación', weatherSea: 'Agua del mar', weatherWave: 'Oleaje',
+      faqTag: 'Preguntas frecuentes', faqTitle: 'Todo lo que debes saber',
+      faq: [
+        { q: '¿Qué tengo que llevar?', a: 'Bañador, toalla, protector solar y ganas de disfrutar. El resto —snorkel, paddle surf, kayak, bebidas y snacks— va incluido a bordo.' },
+        { q: '¿Hay una edad mínima o es apto para niños?', a: 'Sí, es una excursión perfecta para familias. Disponemos de chalecos salvavidas homologados para adultos y niños de todas las edades.' },
+        { q: '¿Qué pasa si hace mal tiempo?', a: 'La seguridad es lo primero: si las condiciones del mar no son adecuadas, reprogramamos la salida sin coste o le reembolsamos el depósito.' },
+        { q: '¿Cómo funciona la reserva y el pago?', a: 'Escríbanos con la excursión, fecha y número de personas. Le confirmamos disponibilidad en pocas horas y bloqueamos la plaza con un depósito; el resto se abona a bordo.' },
+        { q: '¿Cuántas personas caben en el barco?', a: 'El Zafiro admite hasta 11 personas, con precio base hasta 7 pax y un suplemento por persona adicional.' },
+        { q: '¿Incluye comida y bebida?', a: 'Sí. Todas las excursiones incluyen bebidas y snacks a bordo; el Medio Día y el Día Completo incluyen además comida.' },
+        { q: '¿Podemos elegir la hora de salida?', a: 'Adaptamos los horarios siempre que la disponibilidad y las condiciones del mar lo permitan. Coméntenoslo al reservar.' },
+        { q: '¿Se marea la gente a bordo?', a: 'Navegamos cerca de la costa y a un ritmo tranquilo, lo que reduce mucho el riesgo de mareo. Aun así, si eres propenso, te recomendamos tomar tu medicación habitual antes de zarpar.' }
+      ],
       reviewFormTitle: '¿Has navegado con nosotros?', reviewFormSub: 'Nos encantaría leer tu experiencia. Deja tu reseña y la publicamos.', reviewGoogle: 'Deja tu reseña en Google', reviewOr: 'o escríbenos tu opinión aquí',
       rfName: 'Nombre', rfRating: 'Valoración', rfComment: 'Tu reseña', rfSend: 'Enviar reseña', rfSent: '¡Gracias por tu reseña! La revisaremos y publicaremos.', rfValidation: 'Indica tu nombre y una valoración.',
     },
@@ -327,6 +396,19 @@ var I18N = {
       locBody: 'We sail from the Reial Club Nàutic de Port de Pollença, the perfect starting point to explore Formentor and the coves of the north.',
       locBtn: 'Get directions',
       ctaTag: 'Book', ctaTitle: 'Book your day at sea', ctaBody: 'Limited spots per sailing. Write to us and we confirm availability within a few hours.', ctaButton: 'Book now',
+      weatherTag: 'Live conditions', weatherTitle: 'Port de Pollença right now', weatherLive: 'LIVE', weatherLoading: 'Loading…',
+      weatherWind: 'Wind', weatherFeels: 'Feels like', weatherSea: 'Sea water', weatherWave: 'Waves',
+      faqTag: 'FAQ', faqTitle: 'Everything you need to know',
+      faq: [
+        { q: 'What should I bring?', a: 'Swimsuit, towel, sunscreen and good vibes. Everything else — snorkel gear, paddle boards, kayak, drinks and snacks — is included on board.' },
+        { q: 'Is there a minimum age or is it suitable for kids?', a: 'Yes, it is a perfect family excursion. We have approved life jackets for adults and children of all ages.' },
+        { q: 'What happens if the weather is bad?', a: 'Safety comes first: if sea conditions are not suitable, we reschedule your trip at no cost or refund your deposit.' },
+        { q: 'How does booking and payment work?', a: 'Write to us with the excursion, date and number of guests. We confirm availability within a few hours and lock in your spot with a deposit; the rest is paid on board.' },
+        { q: 'How many people fit on the boat?', a: 'Zafiro takes up to 11 people, with a base price for up to 7 pax and a supplement per extra guest.' },
+        { q: 'Is food and drink included?', a: 'Yes. All excursions include drinks and snacks on board; the Half Day and Full Day also include a meal.' },
+        { q: 'Can we choose the departure time?', a: 'We adapt schedules whenever availability and sea conditions allow. Just mention it when booking.' },
+        { q: 'Do people get seasick on board?', a: 'We sail close to shore at a calm pace, which greatly reduces the risk of seasickness. If you are prone to it, we recommend taking your usual medication before departure.' }
+      ],
       reviewFormTitle: 'Sailed with us?', reviewFormSub: "We'd love to read about your experience. Leave your review below.", reviewGoogle: 'Leave your review on Google', reviewOr: 'or write your feedback here',
       rfName: 'Name', rfRating: 'Rating', rfComment: 'Your review', rfSend: 'Send review', rfSent: 'Thanks for your review! We will check and publish it.', rfValidation: 'Please add your name and a rating.',
     },
@@ -369,6 +451,19 @@ var I18N = {
       locBody: 'Wir starten vom Reial Club Nàutic de Port de Pollença, dem perfekten Ausgangspunkt für Formentor und die Buchten des Nordens.',
       locBtn: 'Anfahrt',
       ctaTag: 'Buchen', ctaTitle: 'Buchen Sie Ihren Tag auf See', ctaBody: 'Begrenzte Plätze pro Fahrt. Schreiben Sie uns und wir bestätigen die Verfügbarkeit innerhalb weniger Stunden.', ctaButton: 'Jetzt buchen',
+      weatherTag: 'Bedingungen live', weatherTitle: 'Port de Pollença gerade jetzt', weatherLive: 'LIVE', weatherLoading: 'Wird geladen…',
+      weatherWind: 'Wind', weatherFeels: 'Gefühlt', weatherSea: 'Meerwasser', weatherWave: 'Wellen',
+      faqTag: 'Häufige Fragen', faqTitle: 'Alles, was Sie wissen müssen',
+      faq: [
+        { q: 'Was muss ich mitbringen?', a: 'Badeanzug, Handtuch, Sonnencreme und gute Laune. Alles andere — Schnorchelausrüstung, Paddleboards, Kajak, Getränke und Snacks — ist an Bord inklusive.' },
+        { q: 'Gibt es ein Mindestalter oder ist es für Kinder geeignet?', a: 'Ja, es ist ein perfekter Familienausflug. Wir haben zugelassene Schwimmwesten für Erwachsene und Kinder jeden Alters.' },
+        { q: 'Was passiert bei schlechtem Wetter?', a: 'Sicherheit geht vor: Wenn die Seebedingungen nicht geeignet sind, verschieben wir Ihre Fahrt kostenlos oder erstatten Ihre Anzahlung.' },
+        { q: 'Wie funktionieren Buchung und Zahlung?', a: 'Schreiben Sie uns mit Ausflug, Datum und Personenzahl. Wir bestätigen die Verfügbarkeit innerhalb weniger Stunden und sichern Ihren Platz mit einer Anzahlung; der Rest wird an Bord bezahlt.' },
+        { q: 'Wie viele Personen passen auf das Boot?', a: 'Die Zafiro fasst bis zu 11 Personen, mit einem Grundpreis für bis zu 7 Pax und einem Aufpreis pro zusätzlicher Person.' },
+        { q: 'Sind Essen und Trinken inklusive?', a: 'Ja. Alle Ausflüge beinhalten Getränke und Snacks an Bord; der Halbe Tag und der Ganze Tag beinhalten zudem eine Mahlzeit.' },
+        { q: 'Können wir die Abfahrtszeit wählen?', a: 'Wir passen die Zeiten an, sofern Verfügbarkeit und Seebedingungen es zulassen. Erwähnen Sie es einfach bei der Buchung.' },
+        { q: 'Wird einem an Bord schlecht?', a: 'Wir fahren küstennah und in ruhigem Tempo, was das Risiko von Seekrankheit stark verringert. Wenn Sie dazu neigen, empfehlen wir, vor der Abfahrt Ihre gewohnte Medikation einzunehmen.' }
+      ],
       reviewFormTitle: 'Schon mitgefahren?', reviewFormSub: 'Wir würden uns über deine Erfahrung freuen. Hinterlasse deine Bewertung.', reviewGoogle: 'Bewerte uns auf Google', reviewOr: 'oder schreib uns dein Feedback hier',
       rfName: 'Name', rfRating: 'Bewertung', rfComment: 'Deine Bewertung', rfSend: 'Bewertung senden', rfSent: 'Danke für deine Bewertung! Wir prüfen und veröffentlichen sie.', rfValidation: 'Bitte Namen und Bewertung angeben.',
     },
@@ -447,6 +542,7 @@ function setLang(l) {
   applyText();
   renderHome();
   renderExcursions();
+  renderFAQ();
   renderContactBtn();
   try { localStorage.setItem('zafiro_lang', l); } catch (e) {}
 }
@@ -472,6 +568,17 @@ function renderHome() {
   });
   var rev = document.getElementById('home-reviews'); rev.innerHTML = '';
   h.reviews.forEach(function (r) { var d = el('div', 'review'); d.innerHTML = '<div class="stars">★★★★★</div><div class="q">' + esc(r.quote) + '</div><div class="who">' + esc(r.name) + '</div>'; rev.appendChild(d); });
+}
+
+function renderFAQ() {
+  var h = I18N[lang].home;
+  var list = document.getElementById('faq-list'); if (!list) return;
+  list.innerHTML = '';
+  (h.faq || []).forEach(function (item, i) {
+    var d = document.createElement('details'); d.className = 'faq-item'; if (i === 0) d.open = true;
+    d.innerHTML = '<summary>' + esc(item.q) + '</summary><div class="faq-a">' + esc(item.a) + '</div>';
+    list.appendChild(d);
+  });
 }
 
 /* ---------- EXCURSIONES dinámico ---------- */
@@ -586,58 +693,6 @@ var spy = new IntersectionObserver(function (entries) {
   });
 }, { rootMargin: '-45% 0px -50% 0px' });
 ['sec-top', 'sec-barco', 'sec-excursiones', 'sec-opiniones'].forEach(function (id) { var e = document.getElementById(id); if (e) spy.observe(e); });
-
-/* ---------- GALERÍA del barco ----------
-   Para añadir fotos: sube el archivo a assets/img/ y añade su ruta a esta lista. */
-var BOAT_GALLERY = [
-  { src: 'assets/img/barco.jpg' },
-  { src: 'assets/img/barco-people.jpg' },
-  { src: 'assets/img/barco-platform.jpg' },
-  { src: 'assets/img/gp3.jpg' },
-  { src: 'assets/img/barco-villa.jpg' }
-];
-(function () {
-  var g = document.getElementById('boat-gallery');
-  if (!g) return;
-  var dotsWrap = document.getElementById('gal-dots');
-  var prevBtn = document.getElementById('gal-prev');
-  var nextBtn = document.getElementById('gal-next');
-  var imgs = [], dots = [], idx = 0, timer = null;
-  BOAT_GALLERY.forEach(function (item, i) {
-    var im = document.createElement('img');
-    im.className = 'gal-img' + (i === 0 ? ' on' : '') + (item.mirror ? ' flip' : '') + (item.contain ? ' contain' : '');
-    im.src = item.src; im.alt = 'Zafiro'; im.loading = i === 0 ? 'eager' : 'lazy';
-    g.appendChild(im); imgs.push(im);
-    var d = document.createElement('button');
-    d.className = 'gal-dot' + (i === 0 ? ' on' : ''); d.type = 'button';
-    d.setAttribute('aria-label', 'Foto ' + (i + 1));
-    d.addEventListener('click', function () { show(i); restart(); });
-    dotsWrap.appendChild(d); dots.push(d);
-  });
-  function show(i) {
-    idx = (i + imgs.length) % imgs.length;
-    imgs.forEach(function (m, k) { m.classList.toggle('on', k === idx); });
-    dots.forEach(function (m, k) { m.classList.toggle('on', k === idx); });
-  }
-  function next() { show(idx + 1); }
-  function prev() { show(idx - 1); }
-  function start() { if (imgs.length > 1) timer = setInterval(next, 5000); }
-  function restart() { clearInterval(timer); start(); }
-  nextBtn.addEventListener('click', function () { next(); restart(); });
-  prevBtn.addEventListener('click', function () { prev(); restart(); });
-  g.addEventListener('mouseenter', function () { clearInterval(timer); });
-  g.addEventListener('mouseleave', start);
-  var x0 = null;
-  g.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
-  g.addEventListener('touchend', function (e) {
-    if (x0 === null) return;
-    var dx = e.changedTouches[0].clientX - x0;
-    if (Math.abs(dx) > 40) { (dx < 0 ? next : prev)(); restart(); }
-    x0 = null;
-  });
-  if (imgs.length < 2) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; dotsWrap.style.display = 'none'; }
-  start();
-})();
 
 /* ---------- hero video autoplay (móvil) ---------- */
 (function () {
