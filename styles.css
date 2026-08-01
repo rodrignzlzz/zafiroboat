@@ -391,3 +391,5 @@
 .faq-item summary::after { content: "+"; position: absolute; right: 0; top: 18px; font-family: var(--display); font-size: 22px; color: var(--gold); transition: transform .25s ease; }
 .faq-item[open] summary::after { transform: rotate(45deg); }
 .faq-item .faq-a { padding: 0 30px 22px 0; font-size: 15px; line-height: 1.75; color: var(--ink-soft); font-weight: 300; }
+
+.tour-fact .v.small { font-size: 16px; line-height: 1.4; }
