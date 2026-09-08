@@ -393,3 +393,6 @@
 .faq-item .faq-a { padding: 0 30px 22px 0; font-size: 15px; line-height: 1.75; color: var(--ink-soft); font-weight: 300; }
 
 .tour-fact .v.small { font-size: 16px; line-height: 1.4; }
+
+/* SEO: hero titles promoted to h1 keep their visual size */
+h1.title{margin:0;}
