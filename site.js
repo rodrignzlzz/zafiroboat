@@ -1,9 +1,9 @@
 /* Zafiro Boat — reservas online
-   Mientras `live` sea false, los botones de reserva online solo los ve quien abra la web con ?reservas=1
-   (modo prueba del dueño; ?reservas=0 lo desactiva). Cuando el pago real esté listo se pone `live: true`
-   y los ven todos los visitantes. */
+   `live: true` = los botones de reserva online los ven todos los visitantes (abierto al público desde nov 2026).
+   Con `live: false` solo los ve quien abra la web con ?reservas=1 (modo prueba del dueño; ?reservas=0 lo desactiva).
+   Al volver a false la web vuelve a mandar "Reservar" al formulario de contacto. */
 (function () {
-  var ZB = window.ZB = { bookingUrl: 'https://zafiro-reservas.vercel.app/', live: false };
+  var ZB = window.ZB = { bookingUrl: 'https://zafiro-reservas.vercel.app/', live: true };
 
   ZB.bookingEnabled = function () {
     if (ZB.live) return true;
