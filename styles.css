@@ -271,9 +271,33 @@
     .nav.booking-on .nav-link { display: none; }
     .nav.booking-on .btn.nav-reservas, .nav.booking-on .btn.nav-book { padding: 9px 11px; letter-spacing: 1px; font-size: 10px; white-space: nowrap; }
     .nav.booking-on .nav-right { gap: 7px; }
+    /* Móviles estrechos (320-360 px): el logo no se encoge nunca y los botones/banderas se compactan para que todo quepa. */
+    .nav.booking-on .brand { flex: 0 0 auto; }
+    .nav.booking-on .brand img { height: 28px; }
+    .nav.booking-on .nav-right { gap: 5px; min-width: 0; }
+    .nav.booking-on .btn.nav-reservas, .nav.booking-on .btn.nav-book { padding: 8px 9px; letter-spacing: .4px; font-size: 9.5px; }
+    .nav.booking-on .lang { gap: 1px; padding: 2px; }
+    .nav.booking-on .lang-btn { padding: 5px; }
     /* "Contáctanos" pasa a icono (sobre) en móvil; el texto sigue disponible para lectores de pantalla (aria-label). */
-    .nav.booking-on .btn-contact { font-size: 0; width: 36px; height: 36px; padding: 0; position: relative; }
-    .nav.booking-on .btn-contact::before { content: ''; position: absolute; inset: 0; margin: auto; width: 16px; height: 16px; background: currentColor;
+    .nav.booking-on .btn.btn-contact { font-size: 0; letter-spacing: 0; width: 32px; height: 32px; padding: 0; position: relative; overflow: hidden; }
+    .nav.booking-on .btn.btn-contact::before { content: ''; position: absolute; inset: 0; margin: auto; width: 16px; height: 16px; background: currentColor;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 5h18v14H3zM3 6l9 7 9-7' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 5h18v14H3zM3 6l9 7 9-7' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+  }
+  @media (max-width: 700px) { /* menú con reserva online: mismo ajuste que en móvil hasta 700 px */
+    /* Con reserva online hay un botón más en el menú: se oculta "Inicio" y se compactan los botones para que quepan. */
+    .nav.booking-on .nav-link { display: none; }
+    .nav.booking-on .btn.nav-reservas, .nav.booking-on .btn.nav-book { padding: 9px 11px; letter-spacing: 1px; font-size: 10px; white-space: nowrap; }
+    .nav.booking-on .nav-right { gap: 7px; }
+    /* Móviles estrechos (320-360 px): el logo no se encoge nunca y los botones/banderas se compactan para que todo quepa. */
+    .nav.booking-on .brand { flex: 0 0 auto; }
+    .nav.booking-on .brand img { height: 28px; }
+    .nav.booking-on .nav-right { gap: 5px; min-width: 0; }
+    .nav.booking-on .btn.nav-reservas, .nav.booking-on .btn.nav-book { padding: 8px 9px; letter-spacing: .4px; font-size: 9.5px; }
+    .nav.booking-on .lang { gap: 1px; padding: 2px; }
+    .nav.booking-on .lang-btn { padding: 5px; }
+    /* "Contáctanos" pasa a icono (sobre) en móvil; el texto sigue disponible para lectores de pantalla (aria-label). */
+    .nav.booking-on .btn.btn-contact { font-size: 0; letter-spacing: 0; width: 32px; height: 32px; padding: 0; position: relative; overflow: hidden; }
+    .nav.booking-on .btn.btn-contact::before { content: ''; position: absolute; inset: 0; margin: auto; width: 16px; height: 16px; background: currentColor;
       -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 5h18v14H3zM3 6l9 7 9-7' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 5h18v14H3zM3 6l9 7 9-7' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
   }
 
