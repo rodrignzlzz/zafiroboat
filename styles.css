@@ -73,6 +73,10 @@
   .nav.solid .lang-btn:hover { color: var(--navy); }
   .nav.solid .lang-btn.active { background: var(--navy); color: #fff; }
   .nav .btn { padding: 11px 24px; font-size: 11.5px; }
+  .nav .btn-contact { background: transparent; border-color: rgba(255,255,255,0.55); color: #fff; }
+  .nav .btn-contact:hover { background: rgba(255,255,255,0.14); color: #fff; }
+  .nav.solid .btn-contact { border-color: var(--line); color: var(--ink); }
+  .nav.solid .btn-contact:hover { border-color: var(--gold); background: transparent; color: var(--ink); }
   .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; z-index: 101; }
   .nav-toggle span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; transition: .3s; }
   .nav.solid .nav-toggle span { background: var(--navy); }
@@ -245,7 +249,7 @@
     .nav-link { font-size: 12.5px; }
     .lang { gap: 3px; padding: 3px; }
     .lang-btn { gap: 5px; padding: 6px 9px; }
-    .nav .btn.nav-reservas { padding: 10px 18px; }
+    .nav .btn.nav-reservas, .nav .btn.nav-book { padding: 10px 18px; }
     .split, .split.reverse .split-media { grid-template-columns: 1fr; }
     .split.reverse .split-media { order: 0; }
     .split-media img { aspect-ratio: 16 / 11; }
@@ -261,8 +265,16 @@
     .brand img { height: 30px; }
     .nav-link { font-size: 11.5px; }
     .lang-btn { font-size: 0; letter-spacing: 0; gap: 0; padding: 6px 7px; }
-    .nav .btn.nav-reservas { padding: 9px 15px; font-size: 10.5px; }
+    .nav .btn.nav-reservas, .nav .btn.nav-book { padding: 9px 15px; font-size: 10.5px; }
     .nav-right { gap: 9px; }
+    /* Con reserva online hay un botón más en el menú: se oculta "Inicio" y se compactan los botones para que quepan. */
+    .nav.booking-on .nav-link { display: none; }
+    .nav.booking-on .btn.nav-reservas, .nav.booking-on .btn.nav-book { padding: 9px 11px; letter-spacing: 1px; font-size: 10px; white-space: nowrap; }
+    .nav.booking-on .nav-right { gap: 7px; }
+    /* "Contáctanos" pasa a icono (sobre) en móvil; el texto sigue disponible para lectores de pantalla (aria-label). */
+    .nav.booking-on .btn-contact { font-size: 0; width: 36px; height: 36px; padding: 0; position: relative; }
+    .nav.booking-on .btn-contact::before { content: ''; position: absolute; inset: 0; margin: auto; width: 16px; height: 16px; background: currentColor;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 5h18v14H3zM3 6l9 7 9-7' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 5h18v14H3zM3 6l9 7 9-7' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
   }
 
 /* --- Excursion card actions (Más info + Reservar) --- */

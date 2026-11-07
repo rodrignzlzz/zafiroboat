@@ -1,3 +1,40 @@
+/* Zafiro Boat — reservas online
+   Mientras `live` sea false, los botones de reserva online solo los ve quien abra la web con ?reservas=1
+   (modo prueba del dueño; ?reservas=0 lo desactiva). Cuando el pago real esté listo se pone `live: true`
+   y los ven todos los visitantes. */
+(function () {
+  var ZB = window.ZB = { bookingUrl: 'https://zafiro-reservas.vercel.app/', live: false };
+
+  ZB.bookingEnabled = function () {
+    if (ZB.live) return true;
+    try {
+      if (/[?&]reservas(=|&|$)/.test(location.search)) localStorage.setItem('zb_booking_preview', '1');
+      if (/[?&]reservas=0/.test(location.search)) localStorage.removeItem('zb_booking_preview');
+      return localStorage.getItem('zb_booking_preview') === '1';
+    } catch (e) { return /[?&]reservas(=|&|$)/.test(location.search) && !/[?&]reservas=0/.test(location.search); }
+  };
+
+  /** Enlace a la pantalla de reservas, con la excursión preseleccionada (medio | completo | sunset) y el idioma actual. */
+  ZB.bookingHref = function (trip) {
+    var l = document.documentElement.lang;
+    if (['es', 'en', 'de'].indexOf(l) < 0) l = 'es';
+    return ZB.bookingUrl + '?' + (trip ? 'trip=' + encodeURIComponent(trip) + '&' : '') + 'lang=' + l;
+  };
+
+  /** Páginas estáticas: los enlaces con data-book="medio|completo|sunset|" pasan a abrir la reserva online. */
+  ZB.applyBookingLinks = function () {
+    if (!ZB.bookingEnabled()) return;
+    document.querySelectorAll('[data-book]').forEach(function (a) { a.href = ZB.bookingHref(a.getAttribute('data-book')); });
+  };
+  ZB.applyBookingLinks();
+
+  // La portada pinta su menú antes de que este archivo cargue: se repinta ahora si la reserva online está activa.
+  if (ZB.bookingEnabled() && typeof window.applyBooking === 'function') {
+    window.applyBooking();
+    if (typeof window.applyText === 'function') window.applyText();
+  }
+})();
+
 /* Zafiro Boat — consentimiento de cookies (RGPD/LOPDGDD)
    Cookies técnicas (idioma, decisión) están exentas. Google Maps es de terceros
    y solo se carga tras aceptar. */

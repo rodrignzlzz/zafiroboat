@@ -87,7 +87,8 @@
   <div class="brand" onclick="goSection('top')"><img src="assets/logo-z.png" alt="Zafiro"></div>
   <div class="nav-right">
     <button class="nav-link" data-sec="top" data-t="nav.inicio" onclick="goSection('top')"></button>
-    <button class="btn btn-gold nav-reservas" data-view="contacto" data-t="nav.reservas" onclick="go('contacto')"></button>
+    <button class="btn btn-gold nav-reservas" id="nav-contact" data-view="contacto" data-t="nav.reservas" onclick="go('contacto')"></button>
+    <a class="btn btn-gold nav-book" id="nav-book" href="#" data-t="nav.book" hidden></a>
     <div class="lang" role="group" aria-label="Idioma / Language">
       <button class="lang-btn active" data-lang="es" onclick="setLang('es')"><svg width="16" height="11" viewBox="0 0 18 12" aria-hidden="true"><rect width="18" height="12" fill="#c60b1e"/><rect y="3" width="18" height="6" fill="#ffc400"/></svg>ES</button>
       <button class="lang-btn" data-lang="en" onclick="setLang('en')"><svg width="16" height="11" viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#c8102e" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="12"/><path d="M30 0v40M0 20h60" stroke="#c8102e" stroke-width="7"/></svg>EN</button>
@@ -111,7 +112,7 @@
       <div class="hero-rule"></div>
       <p class="hero-sub" data-t="home.heroSubtitle"></p>
       <div class="hero-ctas">
-        <button class="btn btn-gold" data-t="home.heroCta1" onclick="go('contacto')"></button>
+        <button class="btn btn-gold" data-t="home.heroCta1" onclick="bookOrContact()"></button>
         <button class="btn btn-outline" data-t="home.heroCta2" onclick="goSection('excursiones')"></button>
       </div>
     </div>
@@ -278,7 +279,7 @@
       <div class="eyebrow" style="color:var(--gold)" data-t="home.ctaTag"></div>
       <h2 class="h-sec" data-t="home.ctaTitle"></h2>
       <p class="lead" data-t="home.ctaBody"></p>
-      <button class="btn btn-gold" data-t="home.ctaButton" onclick="go('contacto')"></button>
+      <button class="btn btn-gold" data-t="home.ctaButton" onclick="bookOrContact()"></button>
     </div>
   </section>
 </main>
@@ -339,7 +340,7 @@ var FORM_ENDPOINT = 'https://formsubmit.co/ajax/zafiroboat@gmail.com';
 
 var I18N = {
   es: {
-    nav: { inicio: 'Inicio', barco: 'El Barco', excursiones: 'Excursiones', opiniones: 'Opiniones', contacto: 'Contacto', reservas: 'Reservas', cta: 'Reservar' },
+    nav: { inicio: 'Inicio', barco: 'El Barco', excursiones: 'Excursiones', opiniones: 'Opiniones', contacto: 'Contacto', reservas: 'Reservas', book: 'Reservar ahora', contactUs: 'Contáctanos', cta: 'Reservar' },
     home: {
       heroTag: 'Port de Pollença · Mallorca',
       heroSubtitle: 'El highlight de tus vacaciones.',
@@ -394,7 +395,7 @@ var I18N = {
     },
   },
   en: {
-    nav: { inicio: 'Home', barco: 'The Boat', excursiones: 'Excursions', opiniones: 'Reviews', contacto: 'Contact', reservas: 'Book', cta: 'Book Now' },
+    nav: { inicio: 'Home', barco: 'The Boat', excursiones: 'Excursions', opiniones: 'Reviews', contacto: 'Contact', reservas: 'Book', book: 'Book now', contactUs: 'Contact us', cta: 'Book Now' },
     home: {
       heroTag: 'Port de Pollença · Mallorca',
       heroSubtitle: 'The highlight of your holiday.',
@@ -449,7 +450,7 @@ var I18N = {
     },
   },
   de: {
-    nav: { inicio: 'Start', barco: 'Das Boot', excursiones: 'Ausflüge', opiniones: 'Bewertungen', contacto: 'Kontakt', reservas: 'Buchen', cta: 'Buchen' },
+    nav: { inicio: 'Start', barco: 'Das Boot', excursiones: 'Ausflüge', opiniones: 'Bewertungen', contacto: 'Kontakt', reservas: 'Buchen', book: 'Jetzt buchen', contactUs: 'Kontakt', cta: 'Buchen' },
     home: {
       heroTag: 'Port de Pollença · Mallorca',
       heroSubtitle: 'Das Highlight Ihres Urlaubs.',
@@ -517,6 +518,21 @@ var ICONS = {
 
 var lang = 'es', view = 'home';
 var TOUR_PAGES = ['tour-medio-dia.html', 'tour-dia-completo.html', 'tour-sunset.html'];
+var TRIP_IDS = ['medio', 'completo', 'sunset']; // mismo orden que las tarjetas; son los ids de la pantalla de reservas
+
+/* ---------- reservas online (ver ZB en site.js) ---------- */
+function bookingOn() { return !!(window.ZB && ZB.bookingEnabled()); }
+function applyBooking() {
+  var on = bookingOn();
+  var book = document.getElementById('nav-book');
+  document.getElementById('nav').classList.toggle('booking-on', on);
+  if (book) { book.hidden = !on; if (on) book.href = ZB.bookingHref(); }
+  // Con reserva online, el botón dorado reserva y "Contáctanos" (nuevo) lleva al formulario donde antes llevaba "Reservas".
+  var c = document.getElementById('nav-contact');
+  if (c) { c.className = on ? 'btn btn-contact nav-reservas' : 'btn btn-gold nav-reservas'; c.setAttribute('data-t', on ? 'nav.contactUs' : 'nav.reservas'); if (on) c.setAttribute('aria-label', T('nav.contactUs')); else c.removeAttribute('aria-label'); }
+}
+/* Botones "Reservar": a la reserva online si está activa; si no, al formulario de contacto de siempre. */
+function bookOrContact() { if (bookingOn()) location.href = ZB.bookingHref(); else go('contacto'); }
 
 function T(path) { var o = I18N[lang]; path.split('.').forEach(function (k) { o = o && o[k]; }); return o == null ? '' : o; }
 function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
@@ -531,7 +547,7 @@ function go(v) {
     b.classList.toggle('active', b.getAttribute('data-view') === v);
   });
   document.getElementById('nav').classList.remove('open');
-  if (history.replaceState) history.replaceState(null, '', v === 'home' ? location.pathname : '#contacto');
+  if (history.replaceState) history.replaceState(null, '', v === 'home' ? location.pathname + location.search : '#contacto');
   window.scrollTo(0, 0);
   onScroll();
 }
@@ -555,6 +571,7 @@ function setLang(l) {
   lang = l;
   document.documentElement.lang = l;
   document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === l); });
+  applyBooking();
   applyText();
   renderHome();
   renderExcursions();
@@ -618,7 +635,9 @@ function renderExcursions() {
           '</div>' +
         '</div>' +
       '</div>';
-    card.querySelector('button').onclick = function () { goReserva(c.name); };
+    card.querySelector('button').onclick = function () {
+      if (bookingOn()) location.href = ZB.bookingHref(TRIP_IDS[ci]); else goReserva(c.name);
+    };
     grid.appendChild(card);
   });
   var ex = document.getElementById('exc-extras'); ex.innerHTML = '';
