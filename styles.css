@@ -460,3 +460,15 @@ body { overflow-x: clip; }
 
 /* Aviso de traducción de cortesía en las páginas legales. */
 .i18n-note { font-size: 13px; line-height: 1.6; color: var(--muted); background: var(--bg-alt); border-left: 3px solid var(--gold); padding: 10px 14px; margin: 0 0 22px; }
+
+/* ---- Portada · El barco: la galería sale hasta el borde izquierdo de la pantalla y es más alta ---- */
+@media (min-width: 901px) {
+  /* El contenido está centrado (máx. 1240px con 40px de margen interior): se estira la foto hacia la izquierda
+     hasta quedar a 24px del borde de la pantalla. */
+  #sec-barco .split-media { margin-left: calc(24px - (100vw - min(1240px, 100vw)) / 2 - 40px); }
+  #sec-barco .gallery { aspect-ratio: 16 / 9.5; border-radius: 6px; }
+}
+@media (max-width: 900px) {
+  #sec-barco .split-media { margin: 0 -22px; }
+  #sec-barco .gallery { aspect-ratio: 4 / 5; border-radius: 0; }
+}
