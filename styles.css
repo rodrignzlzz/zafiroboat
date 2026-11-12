@@ -432,3 +432,31 @@
 
 /* SEO: hero titles promoted to h1 keep their visual size */
 h1.title{margin:0;}
+
+
+/* ---- Páginas de detalle: fotos más grandes ---- */
+body { overflow-x: clip; }
+.page-head { height: clamp(340px, 54vh, 540px); }
+
+/* Galería: sale del ancho del texto y ocupa casi toda la pantalla (de borde a borde en el móvil). */
+.gallery.wide { aspect-ratio: 16 / 9; max-height: 88vh; border-radius: 6px; }
+.tour-body .gallery.wide { width: min(1240px, calc(100vw - 80px)); margin-left: 50%; transform: translateX(-50%); }
+.section .wrap > .gallery.wide { width: min(1440px, calc(100vw - 48px)); margin-left: 50%; transform: translateX(-50%); }
+
+/* El barco: fotos de cada zona más grandes (más columna para la foto en ordenador). */
+.boat-zone { grid-template-columns: 1.3fr 1fr; gap: clamp(28px, 4vw, 56px); }
+.boat-zone.rev { grid-template-columns: 1fr 1.3fr; }
+.bz-media img { aspect-ratio: 1 / 1; }
+
+@media (max-width: 800px) {
+  .boat-zone, .boat-zone.rev { grid-template-columns: 1fr; }
+  .bz-media { margin: 0 -22px; }
+  .bz-media img { aspect-ratio: 4 / 5; border-radius: 0; }
+  .tour-body .gallery.wide, .section .wrap > .gallery.wide { width: 100vw; margin-left: 50%; transform: translateX(-50%); border-radius: 0; aspect-ratio: 4 / 5; max-height: none; }
+}
+
+/* Páginas secundarias (menú sin id): en móviles pequeños se oculta "Excursiones" para que quepan logo, botón y banderas. */
+@media (max-width: 420px) { .nav:not(#nav) .nav-link { display: none; } }
+
+/* Aviso de traducción de cortesía en las páginas legales. */
+.i18n-note { font-size: 13px; line-height: 1.6; color: var(--muted); background: var(--bg-alt); border-left: 3px solid var(--gold); padding: 10px 14px; margin: 0 0 22px; }
